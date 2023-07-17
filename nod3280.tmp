@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://7r55nm4slqb1"]
+
+[ext_resource type="Script" path="res://Rocket.gd" id="1_dyrov"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dlljf"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_w7fgs"]
+size = Vector3(20, 0.25, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bdij1"]
+size = Vector3(20, 0.25, 20)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_0ekqf"]
+height = 0.25
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_drmm2"]
+height = 0.25
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Floor" type="StaticBody3D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_dlljf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("BoxMesh_w7fgs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape3D_bdij1")
+
+[node name="Rocket" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15601, 0)
+mass = 150.0
+script = ExtResource("1_dyrov")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Rocket"]
+mesh = SubResource("CylinderMesh_0ekqf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocket"]
+shape = SubResource("CylinderShape3D_drmm2")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.67686, 0)
+light_energy = 7.141
+omni_range = 94.638
+omni_attenuation = 1.7411
+
+[node name="CameraPivot" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0108, 6.50793, 8.83434)
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 0.79653, 0.604599, 0, -0.604599, 0.79653, 0, 0, 0)
