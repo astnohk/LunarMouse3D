@@ -29,6 +29,7 @@ jobs:
         with:
           name: web
           path: build/web
+          if-no-files-found: error
       - name: Install rsync 📚
         run: |
           apt-get update && apt-get install -y rsync
