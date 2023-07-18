@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://7r55nm4slqb1"]
+[gd_scene load_steps=13 format=3 uid="uid://7r55nm4slqb1"]
 
 [ext_resource type="Script" path="res://WorldBase.gd" id="1_cyr6l"]
 [ext_resource type="Script" path="res://Rocket.gd" id="1_dyrov"]
 [ext_resource type="Material" uid="uid://lqjkdlqshl5l" path="res://M_RocketBody.tres" id="3_cnk54"]
 [ext_resource type="Material" uid="uid://b84co07v4brp1" path="res://M_RocketBooster.tres" id="4_4wu17"]
+[ext_resource type="SphereMesh" uid="uid://den74hg54dxup" path="res://SM_RocketGas.tres" id="5_3ub18"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dlljf"]
 
@@ -47,6 +48,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1739, 0)
 mass = 150.0
 script = ExtResource("1_dyrov")
 
+[node name="PinJoint3D" type="PinJoint3D" parent="Rocket"]
+node_a = NodePath("..")
+node_b = NodePath("CameraPivot")
+
+[node name="CameraPivot" type="RigidBody3D" parent="Rocket/PinJoint3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 5)
+mass = 0.01
+lock_rotation = true
+
+[node name="Camera3D" type="Camera3D" parent="Rocket/PinJoint3D/CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 0.79653, 0.604599, 0, -0.604599, 0.79653, 0, 0, 0)
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Rocket"]
 mesh = SubResource("CylinderMesh_0ekqf")
 
@@ -81,6 +94,16 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Rocket/FootZp/RigidBody3D"]
 shape = SubResource("CylinderShape3D_huy34")
 
+[node name="Particles3D" type="CPUParticles3D" parent="Rocket/FootZp/RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0646423, 0)
+amount = 16
+mesh = ExtResource("5_3ub18")
+direction = Vector3(0, -1, 0)
+spread = 20.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 0.2
+initial_velocity_max = 0.7
+
 [node name="FootZn" type="HingeJoint3D" parent="Rocket"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, -0.47)
 node_a = NodePath("..")
@@ -97,6 +120,16 @@ skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Rocket/FootZn/RigidBody3D"]
 shape = SubResource("CylinderShape3D_huy34")
+
+[node name="Particles3D" type="CPUParticles3D" parent="Rocket/FootZn/RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.065, 0)
+amount = 16
+mesh = ExtResource("5_3ub18")
+direction = Vector3(0, -1, 0)
+spread = 20.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 0.2
+initial_velocity_max = 0.7
 
 [node name="FootXp" type="HingeJoint3D" parent="Rocket"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.47, -0.2, 0)
@@ -115,6 +148,16 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Rocket/FootXp/RigidBody3D"]
 shape = SubResource("CylinderShape3D_huy34")
 
+[node name="Particles3D" type="CPUParticles3D" parent="Rocket/FootXp/RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.065, 0)
+amount = 16
+mesh = ExtResource("5_3ub18")
+direction = Vector3(0, -1, 0)
+spread = 20.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 0.2
+initial_velocity_max = 0.7
+
 [node name="FootXn" type="HingeJoint3D" parent="Rocket"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.47, -0.2, 0)
 node_a = NodePath("..")
@@ -131,6 +174,16 @@ skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Rocket/FootXn/RigidBody3D"]
 shape = SubResource("CylinderShape3D_huy34")
+
+[node name="Particles3D" type="CPUParticles3D" parent="Rocket/FootXn/RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.065, 0)
+amount = 16
+mesh = ExtResource("5_3ub18")
+direction = Vector3(0, -1, 0)
+spread = 20.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 0.2
+initial_velocity_max = 0.7
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.78192, 0)
@@ -155,9 +208,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.56951, 2.20489, -7.34712)
 light_energy = 7.141
 omni_range = 94.638
 omni_attenuation = 1.7411
-
-[node name="CameraPivot" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.508, 12.3845)
-
-[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
-transform = Transform3D(1, 0, 0, 0, 0.79653, 0.604599, 0, -0.604599, 0.79653, 0, 0, 0)
