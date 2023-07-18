@@ -2,7 +2,7 @@ name: "godot-ci export"
 on: push
 
 env:
-  GODOT_VERSION: 4.1
+  GODOT_VERSION: 4.1.stable
   EXPORT_NAME: LunarMouse3D
   
 jobs:
@@ -13,7 +13,7 @@ jobs:
       image: barichello/godot-ci:4.1
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
         with:
           lfs: true
       - name: Setup
