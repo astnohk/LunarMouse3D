@@ -17,7 +17,7 @@ func _ready():
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	Direction = get_viewport().get_mouse_position() - MouseStartPosition
 	if Input.is_action_pressed("Throttle"):
 		Force = self.global_transform.basis.y * Thrust
