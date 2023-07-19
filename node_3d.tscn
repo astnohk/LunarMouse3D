@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://7r55nm4slqb1"]
+[gd_scene load_steps=19 format=3 uid="uid://7r55nm4slqb1"]
 
 [ext_resource type="Script" path="res://WorldBase.gd" id="1_cyr6l"]
 [ext_resource type="Script" path="res://Rocket.gd" id="1_dyrov"]
@@ -7,6 +7,8 @@
 [ext_resource type="SphereMesh" uid="uid://den74hg54dxup" path="res://SM_RocketGas.tres" id="5_3ub18"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dlljf"]
+friction = 0.75
+bounce = 0.1
 
 [sub_resource type="BoxMesh" id="BoxMesh_w7fgs"]
 size = Vector3(20, 0.25, 20)
@@ -14,12 +16,43 @@ size = Vector3(20, 0.25, 20)
 [sub_resource type="BoxShape3D" id="BoxShape3D_bdij1"]
 size = Vector3(20, 0.25, 20)
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_drmpy"]
+friction = 0.9
+rough = true
+bounce = 0.01
+absorbent = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jw1y7"]
+albedo_color = Color(1, 0.431373, 0.431373, 1)
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 0.1
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_aq0pc"]
+material = SubResource("StandardMaterial3D_jw1y7")
+top_radius = 1.5
+bottom_radius = 1.0
+height = 0.3
+rings = 2
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_6f0ya"]
+height = 0.3
+radius = 1.5
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_c0rt2"]
+friction = 0.5
+bounce = 0.15
+
 [sub_resource type="CylinderMesh" id="CylinderMesh_0ekqf"]
 material = ExtResource("3_cnk54")
 height = 0.25
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_drmm2"]
 height = 0.25
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xjj7v"]
+friction = 0.6
+bounce = 0.1
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_kuab7"]
 material = ExtResource("4_4wu17")
@@ -43,21 +76,32 @@ mesh = SubResource("BoxMesh_w7fgs")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
 shape = SubResource("BoxShape3D_bdij1")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.79274, 0.271678, -6.367)
+physics_material_override = SubResource("PhysicsMaterial_drmpy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("CylinderMesh_aq0pc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("CylinderShape3D_6f0ya")
+
 [node name="Rocket" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1739, 0)
 mass = 150.0
+physics_material_override = SubResource("PhysicsMaterial_c0rt2")
 script = ExtResource("1_dyrov")
 
-[node name="PinJoint3D" type="PinJoint3D" parent="Rocket"]
+[node name="PinJoint3DCamera" type="PinJoint3D" parent="Rocket"]
 node_a = NodePath("..")
 node_b = NodePath("CameraPivot")
 
-[node name="CameraPivot" type="RigidBody3D" parent="Rocket/PinJoint3D"]
+[node name="CameraPivot" type="RigidBody3D" parent="Rocket/PinJoint3DCamera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 5)
 mass = 0.01
 lock_rotation = true
 
-[node name="Camera3D" type="Camera3D" parent="Rocket/PinJoint3D/CameraPivot"]
+[node name="Camera3D" type="Camera3D" parent="Rocket/PinJoint3DCamera/CameraPivot"]
 transform = Transform3D(1, 0, 0, 0, 0.79653, 0.604599, 0, -0.604599, 0.79653, 0, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Rocket"]
@@ -86,6 +130,7 @@ angular_limit/upper = 0.0
 angular_limit/lower = 0.0
 
 [node name="RigidBody3D" type="RigidBody3D" parent="Rocket/FootZp"]
+physics_material_override = SubResource("PhysicsMaterial_xjj7v")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Rocket/FootZp/RigidBody3D"]
 mesh = SubResource("CylinderMesh_kuab7")
