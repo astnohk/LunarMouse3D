@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://7r55nm4slqb1"]
+[gd_scene load_steps=22 format=3 uid="uid://7r55nm4slqb1"]
 
 [ext_resource type="Script" path="res://WorldBase.gd" id="1_cyr6l"]
 [ext_resource type="Script" path="res://Rocket.gd" id="1_dyrov"]
@@ -69,27 +69,7 @@ height = 0.1
 height = 0.1
 radius = 0.2
 
-[sub_resource type="FontFile" id="FontFile_aidcv"]
-face_index = null
-embolden = null
-transform = null
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/16/0/kerning_overrides/64/0 = Vector2(0, 0)
-cache/0/64/0/ascent = 0.0
-cache/0/64/0/descent = 0.0
-cache/0/64/0/underline_position = 0.0
-cache/0/64/0/underline_thickness = 0.0
-cache/0/64/0/scale = 1.0
-cache/0/64/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/64/0/kerning_overrides/64/0 = Vector2(0, 0)
-
 [sub_resource type="LabelSettings" id="LabelSettings_rwyjq"]
-font = SubResource("FontFile_aidcv")
 font_size = 64
 font_color = Color(1, 0.25098, 0.25098, 1)
 
@@ -319,6 +299,8 @@ size_flags_vertical = 6
 layout_mode = 0
 offset_right = 181.0
 offset_bottom = 93.0
+auto_translate = false
+localize_numeral_system = false
 text = "GOAL"
 label_settings = SubResource("LabelSettings_rwyjq")
 horizontal_alignment = 1
