@@ -11,3 +11,4 @@ func _process(delta):
 
 func _detect_goal():
 	print("Goal.")
+	get_node("Panel").visible = true
