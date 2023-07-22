@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://7r55nm4slqb1"]
+[gd_scene load_steps=21 format=3 uid="uid://7r55nm4slqb1"]
 
 [ext_resource type="Script" path="res://WorldBase.gd" id="1_cyr6l"]
 [ext_resource type="Script" path="res://Rocket.gd" id="1_dyrov"]
+[ext_resource type="Script" path="res://GoalStage.gd" id="2_ikm0k"]
 [ext_resource type="Material" uid="uid://lqjkdlqshl5l" path="res://M_RocketBody.tres" id="3_cnk54"]
 [ext_resource type="Material" uid="uid://b84co07v4brp1" path="res://M_RocketBooster.tres" id="4_4wu17"]
 [ext_resource type="SphereMesh" uid="uid://den74hg54dxup" path="res://SM_RocketGas.tres" id="5_3ub18"]
@@ -39,6 +40,10 @@ rings = 2
 height = 0.3
 radius = 1.5
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_0tmqx"]
+height = 0.1
+radius = 1.5
+
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_c0rt2"]
 friction = 0.5
 bounce = 0.15
@@ -64,7 +69,7 @@ height = 0.1
 height = 0.1
 radius = 0.2
 
-[node name="Node3D" type="Node3D"]
+[node name="Root" type="Node3D"]
 script = ExtResource("1_cyr6l")
 
 [node name="Floor" type="StaticBody3D" parent="."]
@@ -76,15 +81,23 @@ mesh = SubResource("BoxMesh_w7fgs")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
 shape = SubResource("BoxShape3D_bdij1")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="GoalStage" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.79274, 0.271678, -6.367)
 physics_material_override = SubResource("PhysicsMaterial_drmpy")
+script = ExtResource("2_ikm0k")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="GoalStage"]
 mesh = SubResource("CylinderMesh_aq0pc")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GoalStage"]
 shape = SubResource("CylinderShape3D_6f0ya")
+
+[node name="Area3D" type="Area3D" parent="GoalStage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19172, 0)
+disable_mode = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GoalStage/Area3D"]
+shape = SubResource("CylinderShape3D_0tmqx")
 
 [node name="Rocket" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1739, 0)
@@ -121,25 +134,25 @@ spot_range = 45.0
 spot_angle = 30.0
 spot_angle_attenuation = 1.7411
 
-[node name="FootZp" type="HingeJoint3D" parent="Rocket"]
+[node name="FootZpHinge" type="HingeJoint3D" parent="Rocket"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0.47)
 node_a = NodePath("..")
-node_b = NodePath("RigidBody3D")
+node_b = NodePath("FootZp")
 angular_limit/enable = true
 angular_limit/upper = 0.0
 angular_limit/lower = 0.0
 
-[node name="RigidBody3D" type="RigidBody3D" parent="Rocket/FootZp"]
+[node name="FootZp" type="RigidBody3D" parent="Rocket/FootZpHinge"]
 physics_material_override = SubResource("PhysicsMaterial_xjj7v")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Rocket/FootZp/RigidBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Rocket/FootZpHinge/FootZp"]
 mesh = SubResource("CylinderMesh_kuab7")
 skeleton = NodePath("../..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocket/FootZp/RigidBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocket/FootZpHinge/FootZp"]
 shape = SubResource("CylinderShape3D_huy34")
 
-[node name="Particles3D" type="CPUParticles3D" parent="Rocket/FootZp/RigidBody3D"]
+[node name="Particles3D" type="CPUParticles3D" parent="Rocket/FootZpHinge/FootZp"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0646423, 0)
 amount = 16
 mesh = ExtResource("5_3ub18")
@@ -149,24 +162,24 @@ gravity = Vector3(0, 0, 0)
 initial_velocity_min = 0.2
 initial_velocity_max = 0.7
 
-[node name="FootZn" type="HingeJoint3D" parent="Rocket"]
+[node name="FootZnHinge" type="HingeJoint3D" parent="Rocket"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, -0.47)
 node_a = NodePath("..")
-node_b = NodePath("RigidBody3D")
+node_b = NodePath("FootZn")
 angular_limit/enable = true
 angular_limit/upper = 0.0
 angular_limit/lower = 0.0
 
-[node name="RigidBody3D" type="RigidBody3D" parent="Rocket/FootZn"]
+[node name="FootZn" type="RigidBody3D" parent="Rocket/FootZnHinge"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Rocket/FootZn/RigidBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Rocket/FootZnHinge/FootZn"]
 mesh = SubResource("CylinderMesh_kuab7")
 skeleton = NodePath("../..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocket/FootZn/RigidBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocket/FootZnHinge/FootZn"]
 shape = SubResource("CylinderShape3D_huy34")
 
-[node name="Particles3D" type="CPUParticles3D" parent="Rocket/FootZn/RigidBody3D"]
+[node name="Particles3D" type="CPUParticles3D" parent="Rocket/FootZnHinge/FootZn"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.065, 0)
 amount = 16
 mesh = ExtResource("5_3ub18")
@@ -176,24 +189,24 @@ gravity = Vector3(0, 0, 0)
 initial_velocity_min = 0.2
 initial_velocity_max = 0.7
 
-[node name="FootXp" type="HingeJoint3D" parent="Rocket"]
+[node name="FootXpHinge" type="HingeJoint3D" parent="Rocket"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.47, -0.2, 0)
 node_a = NodePath("..")
-node_b = NodePath("RigidBody3D")
+node_b = NodePath("FootXp")
 angular_limit/enable = true
 angular_limit/upper = 0.0
 angular_limit/lower = 0.0
 
-[node name="RigidBody3D" type="RigidBody3D" parent="Rocket/FootXp"]
+[node name="FootXp" type="RigidBody3D" parent="Rocket/FootXpHinge"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Rocket/FootXp/RigidBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Rocket/FootXpHinge/FootXp"]
 mesh = SubResource("CylinderMesh_kuab7")
 skeleton = NodePath("../..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocket/FootXp/RigidBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocket/FootXpHinge/FootXp"]
 shape = SubResource("CylinderShape3D_huy34")
 
-[node name="Particles3D" type="CPUParticles3D" parent="Rocket/FootXp/RigidBody3D"]
+[node name="Particles3D" type="CPUParticles3D" parent="Rocket/FootXpHinge/FootXp"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.065, 0)
 amount = 16
 mesh = ExtResource("5_3ub18")
@@ -203,24 +216,24 @@ gravity = Vector3(0, 0, 0)
 initial_velocity_min = 0.2
 initial_velocity_max = 0.7
 
-[node name="FootXn" type="HingeJoint3D" parent="Rocket"]
+[node name="FootXnHinge" type="HingeJoint3D" parent="Rocket"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.47, -0.2, 0)
 node_a = NodePath("..")
-node_b = NodePath("RigidBody3D")
+node_b = NodePath("FootXn")
 angular_limit/enable = true
 angular_limit/upper = 0.0
 angular_limit/lower = 0.0
 
-[node name="RigidBody3D" type="RigidBody3D" parent="Rocket/FootXn"]
+[node name="FootXn" type="RigidBody3D" parent="Rocket/FootXnHinge"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Rocket/FootXn/RigidBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Rocket/FootXnHinge/FootXn"]
 mesh = SubResource("CylinderMesh_kuab7")
 skeleton = NodePath("../..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocket/FootXn/RigidBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocket/FootXnHinge/FootXn"]
 shape = SubResource("CylinderShape3D_huy34")
 
-[node name="Particles3D" type="CPUParticles3D" parent="Rocket/FootXn/RigidBody3D"]
+[node name="Particles3D" type="CPUParticles3D" parent="Rocket/FootXnHinge/FootXn"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.065, 0)
 amount = 16
 mesh = ExtResource("5_3ub18")
@@ -233,23 +246,30 @@ initial_velocity_max = 0.7
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.78192, 0)
 light_energy = 7.141
+shadow_enabled = true
 omni_range = 94.638
 omni_attenuation = 1.7411
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.89335, 2.69776, 10.2112)
 light_energy = 7.141
+shadow_enabled = true
 omni_range = 94.638
 omni_attenuation = 1.7411
 
 [node name="OmniLight3D3" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.7171, 9.49457, -2.85772)
 light_energy = 7.141
+shadow_enabled = true
 omni_range = 94.638
 omni_attenuation = 1.7411
 
 [node name="OmniLight3D4" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.56951, 2.20489, -7.34712)
 light_energy = 7.141
+shadow_enabled = true
 omni_range = 94.638
 omni_attenuation = 1.7411
+
+[connection signal="body_entered" from="GoalStage/Area3D" to="GoalStage" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="GoalStage/Area3D" to="GoalStage" method="_on_area_3d_body_exited"]
