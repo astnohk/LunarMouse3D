@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://cen0t24ciso2"]
+
+[ext_resource type="PackedScene" uid="uid://dvu3ilqmaho4i" path="res://Blender/LightStand002.glb" id="1_ixyqc"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qb0re"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gep4w"]
+size = Vector3(0.5, 0.2, 0.5)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_hjute"]
+height = 2.5
+radius = 0.05
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0gwli"]
+radius = 0.2
+
+[node name="LightStand002" type="Node3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_qb0re")
+
+[node name="LightStand002" parent="RigidBody3D" instance=ExtResource("1_ixyqc")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0995118, 0)
+shape = SubResource("BoxShape3D_gep4w")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4792, 0)
+shape = SubResource("CylinderShape3D_hjute")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(0.906308, -0.422618, 0, 0.422618, 0.906308, 0, 0, 0, 1, 0.331521, 2.45959, 0)
+shape = SubResource("SphereShape3D_0gwli")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="RigidBody3D"]
+transform = Transform3D(0.906308, 4.09542e-09, -0.422618, 0.422618, -1.84732e-08, 0.906308, -4.09542e-09, -1, -1.84732e-08, 0.245086, 2.63652, 0)
+light_color = Color(1, 0.839216, 0.4, 1)
+light_energy = 4.0
+light_indirect_energy = 2.0
+shadow_enabled = true

@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://dgcv15ppsv2bp"]
+
+[ext_resource type="PackedScene" uid="uid://8o55040y6iop" path="res://Blender/LightStand001.glb" id="1_apgfw"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rpin8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y7d7f"]
+size = Vector3(0.5, 0.2, 0.5)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_u8g6e"]
+height = 2.5
+radius = 0.05
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_klka5"]
+radius = 0.23
+height = 1.0
+
+[node name="LightStand001" type="Node3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_rpin8")
+
+[node name="LightStand001" parent="RigidBody3D" instance=ExtResource("1_apgfw")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.100252, 0)
+shape = SubResource("BoxShape3D_y7d7f")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47937, 0)
+shape = SubResource("CylinderShape3D_u8g6e")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 2.49786, 0)
+shape = SubResource("CapsuleShape3D_klka5")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="RigidBody3D"]
+transform = Transform3D(0.906308, -4.09542e-09, 0.422618, -0.422618, -1.84732e-08, 0.906308, 4.09542e-09, -1, -1.84732e-08, -0.246215, 2.62281, 0)
+light_color = Color(1, 0.772549, 0.321569, 1)
+light_energy = 4.0
+light_indirect_energy = 2.0
+shadow_enabled = true
+distance_fade_begin = 3.0
+distance_fade_shadow = 10.0
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="RigidBody3D"]
+transform = Transform3D(0.906308, -4.09542e-09, -0.422618, 0.422618, 1.84732e-08, 0.906308, 4.09542e-09, -1, 1.84732e-08, 0.244844, 2.62281, 0)
+light_color = Color(1, 0.772549, 0.321569, 1)
+light_energy = 4.0
+light_indirect_energy = 2.0
+shadow_enabled = true
+distance_fade_begin = 3.0
+distance_fade_shadow = 10.0
