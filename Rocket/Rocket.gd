@@ -59,7 +59,6 @@ func _physics_process(delta):
 	var a_prev: Vector3 = accel
 	accel = (v_curr - velocity) / delta
 	velocity = v_curr
-	print((accel - a_prev).length())
 	if (accel - a_prev).length() > ForceThresholdToExplode:
 		print("Explode.")
 		explode()
@@ -77,12 +76,14 @@ func _input(event):
 		MousePressed = false
 
 func explode():
+	var last_position: Vector3 = body.global_position
 	remove_child(body)
 	body = null
-	for i in range(19):
+	# Spawn fired parts
+	for i in range(128):
 		var fire = fire_parts.instantiate()
 		var rigid = fire.get_node("RigidBody3D")
-		var randV = Vector3(randf(), randf(), randf())
-		rigid.apply_central_force(randV * 50 + Vector3(0, 100.0, 0))
-		rigid.set_position(randV * 0.5)
+		var randV = Vector3((randf() - 0.5) * 2.0, randf(), (randf() - 0.5) * 2.0)
+		rigid.apply_central_force(randV * 100 + velocity * 0.8)
+		rigid.set_position(last_position + randV * 0.05)
 		add_child(fire)
