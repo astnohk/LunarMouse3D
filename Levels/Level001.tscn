@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://7r55nm4slqb1"]
+[gd_scene load_steps=26 format=3 uid="uid://7r55nm4slqb1"]
 
 [ext_resource type="Script" path="res://WorldBase.gd" id="1_ikbha"]
 [ext_resource type="Shader" path="res://Materials/MoonFace.gdshader" id="2_cbdtw"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://cyq7p1m4dlfly" path="res://Rocket/Rocket.tscn" id="4_i07oa"]
 [ext_resource type="PackedScene" uid="uid://dgcv15ppsv2bp" path="res://Objects/LightStands/LightStand001.tscn" id="5_nh6wg"]
 [ext_resource type="PackedScene" uid="uid://cen0t24ciso2" path="res://Objects/LightStands/LightStand002.tscn" id="6_l2ox2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dmhmx"]
+font_size = 14
 
 [sub_resource type="LabelSettings" id="LabelSettings_rwyjq"]
 font_size = 64
@@ -90,6 +93,29 @@ radius = 1.5
 
 [node name="Root" type="Node3D"]
 script = ExtResource("1_ikbha")
+player_scene = ExtResource("4_i07oa")
+
+[node name="ShowControlPanel" type="Panel" parent="."]
+offset_right = 74.0
+offset_bottom = 22.0
+
+[node name="Label" type="Label" parent="ShowControlPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Reset: R"
+label_settings = SubResource("LabelSettings_dmhmx")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Panel" type="Panel" parent="."]
 visible = false
@@ -164,6 +190,7 @@ disable_mode = 2
 shape = SubResource("CylinderShape3D_0tmqx")
 
 [node name="Rocket" parent="." instance=ExtResource("4_i07oa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="SunLight" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 2.34714, 0)
