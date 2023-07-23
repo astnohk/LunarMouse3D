@@ -195,12 +195,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 [node name="SunLight" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 2.34714, 0)
 light_energy = 0.25
+light_bake_mode = 1
 
 [node name="OmniLights" type="Node3D" parent="."]
 
 [node name="OmniLight3D" type="OmniLight3D" parent="OmniLights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.78192, 0)
 light_energy = 2.0
+light_bake_mode = 1
 shadow_enabled = true
 omni_range = 94.638
 omni_attenuation = 1.7411
@@ -208,6 +210,7 @@ omni_attenuation = 1.7411
 [node name="OmniLight3D2" type="OmniLight3D" parent="OmniLights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.89335, 2.69776, 10.2112)
 light_energy = 2.0
+light_bake_mode = 1
 shadow_enabled = true
 omni_range = 94.638
 omni_attenuation = 1.7411
@@ -215,6 +218,7 @@ omni_attenuation = 1.7411
 [node name="OmniLight3D3" type="OmniLight3D" parent="OmniLights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.7171, 9.49457, -2.85772)
 light_energy = 2.0
+light_bake_mode = 1
 shadow_enabled = true
 omni_range = 94.638
 omni_attenuation = 1.7411
@@ -222,6 +226,7 @@ omni_attenuation = 1.7411
 [node name="OmniLight3D4" type="OmniLight3D" parent="OmniLights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.56951, 2.20489, -7.34712)
 light_energy = 2.0
+light_bake_mode = 1
 shadow_enabled = true
 omni_range = 94.638
 omni_attenuation = 1.7411
