@@ -1,16 +1,16 @@
 [gd_scene load_steps=11 format=3 uid="uid://cyq7p1m4dlfly"]
 
 [ext_resource type="Script" path="res://Rocket/Rocket.gd" id="1_8fh8w"]
-[ext_resource type="Material" uid="uid://lqjkdlqshl5l" path="res://Rocket/Materials/M_RocketBody.tres" id="2_e00yv"]
-[ext_resource type="Material" uid="uid://b84co07v4brp1" path="res://Rocket/Materials/M_RocketBooster.tres" id="3_wt46n"]
-[ext_resource type="SphereMesh" uid="uid://den74hg54dxup" path="res://Rocket/Meshes/SM_RocketGas.tres" id="4_5xvmh"]
+[ext_resource type="Material" uid="uid://lqjkdlqshl5l" path="res://Rocket/Materials/M_RocketBody.tres" id="2_gkpmn"]
+[ext_resource type="Material" uid="uid://b84co07v4brp1" path="res://Rocket/Materials/M_RocketBooster.tres" id="3_6knww"]
+[ext_resource type="SphereMesh" uid="uid://den74hg54dxup" path="res://Rocket/Meshes/SM_RocketGas.tres" id="4_jflvw"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_c0rt2"]
 friction = 0.5
 bounce = 0.15
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_0ekqf"]
-material = ExtResource("2_e00yv")
+material = ExtResource("2_gkpmn")
 height = 0.25
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_drmm2"]
@@ -21,7 +21,7 @@ friction = 0.6
 bounce = 0.1
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_kuab7"]
-material = ExtResource("3_wt46n")
+material = ExtResource("3_6knww")
 top_radius = 0.1
 bottom_radius = 0.2
 height = 0.1
@@ -86,7 +86,7 @@ shape = SubResource("CylinderShape3D_huy34")
 [node name="Particles3D" type="CPUParticles3D" parent="FootZpHinge/FootZp"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0646423, 0)
 amount = 16
-mesh = ExtResource("4_5xvmh")
+mesh = ExtResource("4_jflvw")
 direction = Vector3(0, -1, 0)
 spread = 20.0
 gravity = Vector3(0, 0, 0)
@@ -113,7 +113,7 @@ shape = SubResource("CylinderShape3D_huy34")
 [node name="Particles3D" type="CPUParticles3D" parent="FootZnHinge/FootZn"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.065, 0)
 amount = 16
-mesh = ExtResource("4_5xvmh")
+mesh = ExtResource("4_jflvw")
 direction = Vector3(0, -1, 0)
 spread = 20.0
 gravity = Vector3(0, 0, 0)
@@ -140,7 +140,7 @@ shape = SubResource("CylinderShape3D_huy34")
 [node name="Particles3D" type="CPUParticles3D" parent="FootXpHinge/FootXp"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.065, 0)
 amount = 16
-mesh = ExtResource("4_5xvmh")
+mesh = ExtResource("4_jflvw")
 direction = Vector3(0, -1, 0)
 spread = 20.0
 gravity = Vector3(0, 0, 0)
@@ -167,7 +167,7 @@ shape = SubResource("CylinderShape3D_huy34")
 [node name="Particles3D" type="CPUParticles3D" parent="FootXnHinge/FootXn"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.065, 0)
 amount = 16
-mesh = ExtResource("4_5xvmh")
+mesh = ExtResource("4_jflvw")
 direction = Vector3(0, -1, 0)
 spread = 20.0
 gravity = Vector3(0, 0, 0)
