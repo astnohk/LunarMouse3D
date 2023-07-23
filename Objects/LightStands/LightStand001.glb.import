@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dvu3ilqmaho4i"
-path="res://.godot/imported/LightStand002.glb-9fdcc78966fdd8e4153c1cf146e77450.scn"
+uid="uid://8o55040y6iop"
+path="res://.godot/imported/LightStand001.glb-43910c19d998f4450c1db7af3f2cbaf6.scn"
 
 [deps]
 
-source_file="res://Blender/LightStand002.glb"
-dest_files=["res://.godot/imported/LightStand002.glb-9fdcc78966fdd8e4153c1cf146e77450.scn"]
+source_file="res://Objects/LightStands/LightStand001.glb"
+dest_files=["res://.godot/imported/LightStand001.glb-43910c19d998f4450c1db7af3f2cbaf6.scn"]
 
 [params]
 
@@ -18,7 +18,7 @@ nodes/root_name="Scene Root"
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 meshes/ensure_tangents=true
-meshes/generate_lods=true
+meshes/generate_lods=false
 meshes/create_shadow_meshes=true
 meshes/light_baking=1
 meshes/lightmap_texel_size=0.2

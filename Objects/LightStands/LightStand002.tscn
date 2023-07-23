@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cen0t24ciso2"]
 
-[ext_resource type="PackedScene" uid="uid://dvu3ilqmaho4i" path="res://Blender/LightStand002.glb" id="1_ixyqc"]
+[ext_resource type="PackedScene" uid="uid://dvu3ilqmaho4i" path="res://Objects/LightStands/LightStand002.glb" id="1_ixyqc"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qb0re"]
 
