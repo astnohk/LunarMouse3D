@@ -84,6 +84,6 @@ func explode():
 		var fire = fire_parts.instantiate()
 		var rigid = fire.get_node("RigidBody3D")
 		var randV = Vector3((randf() - 0.5) * 2.0, randf(), (randf() - 0.5) * 2.0)
-		rigid.apply_central_force(randV * 100 + velocity * 0.8)
+		rigid.apply_central_force(randV * 100 + velocity * 0.5)
 		rigid.set_position(last_position + randV * 0.05)
 		add_child(fire)

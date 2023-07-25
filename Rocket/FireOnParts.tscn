@@ -30,8 +30,8 @@ mesh = SubResource("SphereMesh_4ivtg")
 shape = SubResource("SphereShape3D_m3ch7")
 
 [node name="LightmapProbe" type="OmniLight3D" parent="RigidBody3D"]
-light_color = Color(0.996078, 0.168627, 0, 1)
-light_energy = 5.0
-light_indirect_energy = 5.0
-light_volumetric_fog_energy = 5.0
+light_color = Color(0.752941, 0.117647, 0, 1)
+light_indirect_energy = 2.0
+light_volumetric_fog_energy = 2.0
 light_size = 0.3
+omni_range = 2.0

@@ -28,7 +28,6 @@ height = 0.1
 radius = 0.2
 
 [node name="Rocket" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1739, 0)
 script = ExtResource("1_8fh8w")
 fire_parts = ExtResource("2_8ahoy")
 
@@ -41,6 +40,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 5)
 transform = Transform3D(1, 0, 0, 0, 0.79653, 0.604599, 0, -0.604599, 0.79653, 0, 0, 0)
 
 [node name="Body" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 mass = 150.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Body"]

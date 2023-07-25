@@ -1,0 +1,154 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://d1gcmm24wwypm"
+path="res://.godot/imported/RocketBase.glb-4b61f83673a6445f4d826f295f1ff0e0.scn"
+
+[deps]
+
+source_file="res://Objects/RocketBase/RocketBase.glb"
+dest_files=["res://.godot/imported/RocketBase.glb-4b61f83673a6445f4d826f295f1ff0e0.scn"]
+
+[params]
+
+nodes/root_type="Node3D"
+nodes/root_name="Scene Root"
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+meshes/ensure_tangents=true
+meshes/generate_lods=false
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+import_script/path=""
+_subresources={
+"materials": {
+"@MATERIAL:0": {
+"use_external/enabled": true
+},
+"@MATERIAL:1": {
+"use_external/enabled": true
+},
+"@MATERIAL:2": {
+"use_external/enabled": true
+},
+"@MATERIAL:3": {
+"use_external/enabled": true
+},
+"@MATERIAL:4": {
+"use_external/enabled": true
+},
+"@MATERIAL:5": {
+"use_external/enabled": true
+},
+"@MATERIAL:6": {
+"use_external/enabled": true
+},
+"@MATERIAL:7": {
+"use_external/enabled": true
+},
+"@MATERIAL:8": {
+"use_external/enabled": true
+}
+},
+"meshes": {
+"RocketBase_Cube_001": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://Objects/RocketBase/RocketBase_Cube_001.res"
+},
+"RocketBase_Cube_014": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://Objects/RocketBase/RocketBase_Cube_013.res"
+},
+"RocketBase_Cube_015": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://Objects/RocketBase/RocketBase_Cube_015.res"
+},
+"RocketBase_Cube_016": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://Objects/RocketBase/RocketBase_Cube_016.res"
+},
+"RocketBase_Cube_017": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://Objects/RocketBase/RocketBase_Cube_017.res"
+},
+"RocketBase_Cube_018": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://Objects/RocketBase/RocketBase_Cube_018.res"
+},
+"RocketBase_Cube_021": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://Objects/RocketBase/RocketBase_Cube_028.res"
+},
+"RocketBase_Cube_022": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://Objects/RocketBase/RocketBase_Cube_022.res"
+},
+"RocketBase_Cube_024": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://Objects/RocketBase/RocketBase_Cube_024.res"
+}
+}
+}
+gltf/embedded_image_handling=1
