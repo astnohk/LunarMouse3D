@@ -34,7 +34,9 @@ density_texture = SubResource("NoiseTexture3D_j14cn")
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dlljf"]
 friction = 0.75
-bounce = 0.1
+rough = true
+bounce = 0.05
+absorbent = true
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_3nwk2"]
 

@@ -15,7 +15,7 @@ radial_segments = 4
 rings = 3
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_m3ch7"]
-radius = 0.2
+radius = 0.05
 
 [node name="Node3D" type="Node3D"]
 

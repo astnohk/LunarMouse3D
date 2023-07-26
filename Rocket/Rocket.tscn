@@ -1,10 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://cyq7p1m4dlfly"]
+[gd_scene load_steps=12 format=3 uid="uid://cyq7p1m4dlfly"]
 
 [ext_resource type="Script" path="res://Rocket/Rocket.gd" id="1_8fh8w"]
 [ext_resource type="PackedScene" uid="uid://bk1c1423so2mh" path="res://Rocket/FireOnParts.tscn" id="2_8ahoy"]
 [ext_resource type="Material" uid="uid://lqjkdlqshl5l" path="res://Rocket/Materials/M_RocketBody.tres" id="2_gkpmn"]
 [ext_resource type="Material" uid="uid://b84co07v4brp1" path="res://Rocket/Materials/M_RocketBooster.tres" id="3_6knww"]
+[ext_resource type="PhysicsMaterial" uid="uid://dgc2xurjeb3f8" path="res://Rocket/Materials/PM_RocketFoot.tres" id="4_daakr"]
 [ext_resource type="SphereMesh" uid="uid://den74hg54dxup" path="res://Rocket/Meshes/SM_RocketGas.tres" id="4_jflvw"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xd37k"]
+bounce = 0.1
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_0ekqf"]
 material = ExtResource("2_gkpmn")
@@ -12,10 +16,6 @@ height = 0.25
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_drmm2"]
 height = 0.25
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xjj7v"]
-friction = 0.6
-bounce = 0.1
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_kuab7"]
 material = ExtResource("3_6knww")
@@ -42,6 +42,8 @@ transform = Transform3D(1, 0, 0, 0, 0.79653, 0.604599, 0, -0.604599, 0.79653, 0,
 [node name="Body" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 mass = 150.0
+physics_material_override = SubResource("PhysicsMaterial_xd37k")
+continuous_cd = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Body"]
 mesh = SubResource("CylinderMesh_0ekqf")
@@ -70,7 +72,7 @@ angular_limit/upper = 0.0
 angular_limit/lower = 0.0
 
 [node name="FootZp" type="RigidBody3D" parent="Body/FootZpHinge"]
-physics_material_override = SubResource("PhysicsMaterial_xjj7v")
+physics_material_override = ExtResource("4_daakr")
 continuous_cd = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Body/FootZpHinge/FootZp"]
@@ -99,6 +101,7 @@ angular_limit/upper = 0.0
 angular_limit/lower = 0.0
 
 [node name="FootZn" type="RigidBody3D" parent="Body/FootZnHinge"]
+physics_material_override = ExtResource("4_daakr")
 continuous_cd = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Body/FootZnHinge/FootZn"]
@@ -127,6 +130,7 @@ angular_limit/upper = 0.0
 angular_limit/lower = 0.0
 
 [node name="FootXp" type="RigidBody3D" parent="Body/FootXpHinge"]
+physics_material_override = ExtResource("4_daakr")
 continuous_cd = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Body/FootXpHinge/FootXp"]
@@ -155,6 +159,7 @@ angular_limit/upper = 0.0
 angular_limit/lower = 0.0
 
 [node name="FootXn" type="RigidBody3D" parent="Body/FootXnHinge"]
+physics_material_override = ExtResource("4_daakr")
 continuous_cd = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Body/FootXnHinge/FootXn"]
