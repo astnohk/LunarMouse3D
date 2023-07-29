@@ -1,7 +1,8 @@
-[gd_scene load_steps=29 format=3 uid="uid://7r55nm4slqb1"]
+[gd_scene load_steps=33 format=3 uid="uid://7r55nm4slqb1"]
 
 [ext_resource type="Script" path="res://WorldBase.gd" id="1_ikbha"]
 [ext_resource type="Shader" path="res://Materials/MoonFace.gdshader" id="2_cbdtw"]
+[ext_resource type="Shader" path="res://Materials/S_PostProcess.gdshader" id="3_334lj"]
 [ext_resource type="Script" path="res://GoalStage.gd" id="3_bpf7o"]
 [ext_resource type="PackedScene" uid="uid://cyq7p1m4dlfly" path="res://Rocket/Rocket.tscn" id="4_i07oa"]
 [ext_resource type="PackedScene" uid="uid://db2eqcagyt17x" path="res://Objects/RocketBase/RocketBase.tscn" id="5_knm43"]
@@ -9,6 +10,17 @@
 [ext_resource type="Script" path="res://Objects/RocketBase/RocketBase.gd" id="6_4yv6x"]
 [ext_resource type="PackedScene" uid="uid://cen0t24ciso2" path="res://Objects/LightStands/LightStand002.tscn" id="6_l2ox2"]
 [ext_resource type="AudioStream" uid="uid://cij28i8hcqcte" path="res://Audio/BGM.wav" id="9_atid0"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_e5v0k"]
+frequency = 0.5
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hf02u"]
+noise = SubResource("FastNoiseLite_e5v0k")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vi8au"]
+shader = ExtResource("3_334lj")
+shader_parameter/noise_offset = Vector2(0, 0)
+shader_parameter/noise = SubResource("NoiseTexture2D_hf02u")
 
 [sub_resource type="LabelSettings" id="LabelSettings_dmhmx"]
 font_size = 14
@@ -100,11 +112,25 @@ radius = 1.5
 script = ExtResource("1_ikbha")
 player_scene = ExtResource("4_i07oa")
 
-[node name="ShowControlPanel" type="Panel" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_vi8au")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="ShowControlPanel" type="Panel" parent="CanvasLayer2"]
 offset_right = 74.0
 offset_bottom = 22.0
 
-[node name="ResetLabel" type="Label" parent="ShowControlPanel"]
+[node name="ResetLabel" type="Label" parent="CanvasLayer2/ShowControlPanel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -124,7 +150,7 @@ label_settings = SubResource("LabelSettings_dmhmx")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="CanvasLayer2"]
 visible = false
 anchors_preset = 8
 anchor_left = 0.5
@@ -140,7 +166,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="Panel"]
+[node name="Label" type="Label" parent="CanvasLayer2/Panel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -182,6 +208,14 @@ mesh = SubResource("PlaneMesh_ngo4x")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
 shape = SubResource("HeightMapShape3D_fvhyy")
+
+[node name="CameraPivot" type="Marker3D" parent="."]
+
+[node name="Marker3D" type="Marker3D" parent="CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 5)
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot/Marker3D"]
+transform = Transform3D(1, 0, 0, 0, 0.79653, 0.604599, 0, -0.604599, 0.79653, 0, 0, 0)
 
 [node name="GoalStage" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.79274, 0.271678, -6.367)
@@ -295,6 +329,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.26448, 0, -6.36412)
 [node name="LightStand002_002" parent="LightStand002s" instance=ExtResource("6_l2ox2")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.23447, 0, -6.36412)
 
-[connection signal="gui_input" from="ShowControlPanel/ResetLabel" to="." method="_on_reset_label_gui_input"]
+[connection signal="gui_input" from="CanvasLayer2/ShowControlPanel/ResetLabel" to="." method="_on_reset_label_gui_input"]
 [connection signal="body_entered" from="GoalStage/Area3D" to="GoalStage" method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="GoalStage/Area3D" to="GoalStage" method="_on_area_3d_body_exited"]

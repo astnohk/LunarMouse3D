@@ -34,8 +34,6 @@ func _ready():
 func _process(_delta):
 	if not body:
 		return
-	# Update camera position
-	get_node("CameraPivot").global_position = body.global_position
 	# Get the thruster direction	
 	Direction = get_viewport().get_mouse_position() - MouseStartPosition
 	# Check if the Throttle pressed or not
@@ -93,6 +91,6 @@ func explode():
 		var fire = fire_parts.instantiate()
 		var rigid = fire.get_node("RigidBody3D")
 		var randV = Vector3((randf() - 0.5) * 2.0, randf(), (randf() - 0.5) * 2.0)
-		rigid.apply_central_force(randV * 100 + velocity * 0.5)
+		rigid.apply_central_force(randV * 100 + velocity * 0.2)
 		rigid.set_position(last_position + randV * 0.05)
 		add_child(fire)
