@@ -160,6 +160,11 @@ label_settings = SubResource("LabelSettings_rwyjq")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="BGMPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_atid0")
+volume_db = -8.811
+autoplay = true
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ugbw5")
 
@@ -289,11 +294,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.26448, 0, -6.36412)
 
 [node name="LightStand002_002" parent="LightStand002s" instance=ExtResource("6_l2ox2")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.23447, 0, -6.36412)
-
-[node name="BGMPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("9_atid0")
-volume_db = -6.0
-autoplay = true
 
 [connection signal="gui_input" from="ShowControlPanel/ResetLabel" to="." method="_on_reset_label_gui_input"]
 [connection signal="body_entered" from="GoalStage/Area3D" to="GoalStage" method="_on_area_3d_body_entered"]
