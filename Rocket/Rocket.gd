@@ -20,10 +20,15 @@ var velocity: Vector3 = Vector3(0, 0, 0)
 var accel: Vector3 = Vector3(0, 0, 0)
 const ForceThresholdToExplode: float = 30.0
 
+var audioThruster: AudioStreamPlayer
+var audioCrash: AudioStreamPlayer
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	body = get_node("Body")
 	previous_position = body.global_position
+	audioThruster = get_node("Body/AudioThruster")
+	audioCrash = get_node("AudioCrash")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -72,10 +77,14 @@ func _input(event):
 			MousePressed = true
 			# Set Start Position
 			MouseStartPosition = event.position
+			audioThruster.play()
 	if event.is_action_released("Throttle"):
 		MousePressed = false
+		audioThruster.stop()
 
 func explode():
+	print("play audioCrash")
+	audioCrash.play()
 	var last_position: Vector3 = body.global_position
 	remove_child(body)
 	body = null

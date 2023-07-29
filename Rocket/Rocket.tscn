@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cyq7p1m4dlfly"]
+[gd_scene load_steps=14 format=3 uid="uid://cyq7p1m4dlfly"]
 
 [ext_resource type="Script" path="res://Rocket/Rocket.gd" id="1_8fh8w"]
 [ext_resource type="PackedScene" uid="uid://bk1c1423so2mh" path="res://Rocket/FireOnParts.tscn" id="2_8ahoy"]
@@ -6,6 +6,8 @@
 [ext_resource type="Material" uid="uid://b84co07v4brp1" path="res://Rocket/Materials/M_RocketBooster.tres" id="3_6knww"]
 [ext_resource type="PhysicsMaterial" uid="uid://dgc2xurjeb3f8" path="res://Rocket/Materials/PM_RocketFoot.tres" id="4_daakr"]
 [ext_resource type="SphereMesh" uid="uid://den74hg54dxup" path="res://Rocket/Meshes/SM_RocketGas.tres" id="4_jflvw"]
+[ext_resource type="AudioStream" uid="uid://b1g0vdmshtn8t" path="res://Rocket/Sounds/Thruster.wav" id="7_fntrd"]
+[ext_resource type="AudioStream" uid="uid://472bxia1ye8v" path="res://Rocket/Sounds/Crash.wav" id="8_8tjct"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xd37k"]
 bounce = 0.1
@@ -30,6 +32,9 @@ radius = 0.2
 [node name="Rocket" type="Node3D"]
 script = ExtResource("1_8fh8w")
 fire_parts = ExtResource("2_8ahoy")
+
+[node name="AudioCrash" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_8tjct")
 
 [node name="CameraPivot" type="Marker3D" parent="."]
 
@@ -178,3 +183,6 @@ spread = 20.0
 gravity = Vector3(0, 0, 0)
 initial_velocity_min = 0.2
 initial_velocity_max = 0.7
+
+[node name="AudioThruster" type="AudioStreamPlayer" parent="Body"]
+stream = ExtResource("7_fntrd")
