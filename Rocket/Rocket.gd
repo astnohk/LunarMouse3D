@@ -1,6 +1,7 @@
 extends Node3D
 
 @export var fire_parts: PackedScene
+@export var foot_prints: PackedScene
 
 
 const MaxThrusterPower: float = 5.0
@@ -15,10 +16,13 @@ var Direction: Vector2 = Vector2(0, 0)
 const DirectionCoeff: float = 0.0005
 
 var body: RigidBody3D
-var previous_position: Vector3 = Vector3(0, 0, 0)
+var previousPosition: Vector3 = Vector3(0, 0, 0)
 var velocity: Vector3 = Vector3(0, 0, 0)
 var accel: Vector3 = Vector3(0, 0, 0)
 const ForceThresholdToExplode: float = 30.0
+
+const StampInterval: float = 2.0
+var countStamp: float = 0.0
 
 var audioThruster: AudioStreamPlayer
 var audioCrash: AudioStreamPlayer
@@ -26,12 +30,12 @@ var audioCrash: AudioStreamPlayer
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	body = get_node("Body")
-	previous_position = body.global_position
+	previousPosition = body.global_position
 	audioThruster = get_node("Body/AudioThruster")
 	audioCrash = get_node("AudioCrash")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
+func _process(delta):
 	if not body:
 		return
 	# Get the thruster direction	
@@ -53,12 +57,17 @@ func _process(_delta):
 	get_node("Body/FootXnHinge/FootXn/Particles3D").emitting = Emitting
 	get_node("Body/FootZpHinge/FootZp/Particles3D").emitting = Emitting
 	get_node("Body/FootZnHinge/FootZn/Particles3D").emitting = Emitting
+	
+	countStamp += delta
+	if countStamp >= StampInterval:
+		countStamp = 0.0
+		stamp()
 
 func _physics_process(delta):
 	if not body:
 		return
 	# Calculate velocity and accleration
-	var v_curr: Vector3 = (body.global_position - previous_position) / delta
+	var v_curr: Vector3 = (body.global_position - previousPosition) / delta
 	var a_prev: Vector3 = accel
 	accel = (v_curr - velocity) / delta
 	velocity = v_curr
@@ -81,12 +90,14 @@ func _input(event):
 		audioThruster.stop()
 
 func explode():
-	print("play audioCrash")
 	audioCrash.play()
 	var last_position: Vector3 = body.global_position
 	remove_child(body)
 	body = null
 	# Spawn fired parts
+	if not fire_parts:
+		print("[ERROR] 'fire_parts' is null.")
+		return
 	for i in range(128):
 		var fire = fire_parts.instantiate()
 		var rigid = fire.get_node("RigidBody3D")
@@ -94,3 +105,12 @@ func explode():
 		rigid.apply_central_force(randV * 100 + velocity * 0.2)
 		rigid.set_position(last_position + randV * 0.05)
 		add_child(fire)
+
+func stamp():
+	if not foot_prints:
+		print("[ERROR] 'foot_stamps' is null.")
+		return
+	var foot_print: Node3D = foot_prints.instantiate()
+	var marker: Marker3D = get_node("Body/ConeTwistJoint3D/RigidBody3D/Marker3D")
+	foot_print.set_global_position(marker.get_global_position())
+	get_viewport().get_tree().get_root().add_child(foot_print)

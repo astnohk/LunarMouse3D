@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://cyq7p1m4dlfly"]
+[gd_scene load_steps=21 format=3 uid="uid://cyq7p1m4dlfly"]
 
 [ext_resource type="Script" path="res://Rocket/Rocket.gd" id="1_8fh8w"]
 [ext_resource type="PackedScene" uid="uid://bk1c1423so2mh" path="res://Rocket/FireOnParts.tscn" id="2_8ahoy"]
 [ext_resource type="Material" uid="uid://lqjkdlqshl5l" path="res://Rocket/Materials/M_RocketBody.tres" id="2_gkpmn"]
 [ext_resource type="Material" uid="uid://b84co07v4brp1" path="res://Rocket/Materials/M_RocketBooster.tres" id="3_6knww"]
+[ext_resource type="PackedScene" uid="uid://e8nor3p7u8oc" path="res://Rocket/FootPrints.tscn" id="3_rw5id"]
 [ext_resource type="PhysicsMaterial" uid="uid://dgc2xurjeb3f8" path="res://Rocket/Materials/PM_RocketFoot.tres" id="4_daakr"]
 [ext_resource type="SphereMesh" uid="uid://den74hg54dxup" path="res://Rocket/Meshes/SM_RocketGas.tres" id="4_jflvw"]
 [ext_resource type="AudioStream" uid="uid://b1g0vdmshtn8t" path="res://Rocket/Sounds/Thruster.wav" id="7_fntrd"]
@@ -41,9 +42,27 @@ height = 0.1
 height = 0.1
 radius = 0.2
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o41a4"]
+albedo_color = Color(0, 0, 0, 1)
+metallic = 1.0
+roughness = 0.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_uee10"]
+material = SubResource("StandardMaterial3D_o41a4")
+top_radius = 0.025
+bottom_radius = 0.025
+height = 0.075
+radial_segments = 6
+rings = 2
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_afu5n"]
+height = 0.075
+radius = 0.025
+
 [node name="Rocket" type="Node3D"]
 script = ExtResource("1_8fh8w")
 fire_parts = ExtResource("2_8ahoy")
+foot_prints = ExtResource("3_rw5id")
 
 [node name="AudioCrash" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_8tjct")
@@ -51,7 +70,7 @@ volume_db = 5.0
 
 [node name="Body" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
-mass = 90.0
+mass = 150.0
 physics_material_override = SubResource("PhysicsMaterial_xd37k")
 continuous_cd = true
 
@@ -199,3 +218,22 @@ initial_velocity_max = 0.7
 
 [node name="AudioThruster" type="AudioStreamPlayer" parent="Body"]
 stream = ExtResource("7_fntrd")
+
+[node name="ConeTwistJoint3D" type="ConeTwistJoint3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.128854, 0)
+node_a = NodePath("..")
+node_b = NodePath("RigidBody3D")
+swing_span = 0.523599
+twist_span = 0.0
+
+[node name="RigidBody3D" type="RigidBody3D" parent="Body/ConeTwistJoint3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Body/ConeTwistJoint3D/RigidBody3D"]
+mesh = SubResource("CylinderMesh_uee10")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body/ConeTwistJoint3D/RigidBody3D"]
+shape = SubResource("CylinderShape3D_afu5n")
+
+[node name="Marker3D" type="Marker3D" parent="Body/ConeTwistJoint3D/RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
