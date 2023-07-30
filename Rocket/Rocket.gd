@@ -67,13 +67,17 @@ func _physics_process(delta):
 	if not body:
 		return
 	# Calculate velocity and accleration
+	var v_old: Vector3 = velocity
 	var v_curr: Vector3 = (body.global_position - previousPosition) / delta
 	var a_prev: Vector3 = accel
 	accel = (v_curr - velocity) / delta
 	velocity = v_curr
+	# Update previousPosition
+	previousPosition = body.get_global_position()
+	# Explode
 	if (accel - a_prev).length() > ForceThresholdToExplode:
 		print("Explode.")
-		explode()
+		explode(v_old)
 
 # Called when input event fired.
 func _input(event):
@@ -89,7 +93,7 @@ func _input(event):
 		MousePressed = false
 		audioThruster.stop()
 
-func explode():
+func explode(v_old: Vector3):
 	audioCrash.play()
 	var last_position: Vector3 = body.global_position
 	remove_child(body)
@@ -102,7 +106,7 @@ func explode():
 		var fire = fire_parts.instantiate()
 		var rigid = fire.get_node("RigidBody3D")
 		var randV = Vector3((randf() - 0.5) * 2.0, randf(), (randf() - 0.5) * 2.0)
-		rigid.apply_central_force(randV * 100 + velocity * 0.2)
+		rigid.apply_central_force(randV * 100.0 + v_old * Vector3(1, 0, 1) * 20.0)
 		rigid.set_position(last_position + randV * 0.05)
 		add_child(fire)
 
