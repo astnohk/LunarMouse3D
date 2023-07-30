@@ -64,9 +64,11 @@ script = ExtResource("1_8fh8w")
 fire_parts = ExtResource("2_8ahoy")
 foot_prints = ExtResource("3_rw5id")
 
-[node name="AudioCrash" type="AudioStreamPlayer" parent="."]
+[node name="AudioCrash" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("8_8tjct")
-volume_db = 5.0
+volume_db = 10.0
+unit_size = 100.0
+max_db = 6.0
 
 [node name="Body" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
@@ -216,8 +218,9 @@ gravity = Vector3(0, 0, 0)
 initial_velocity_min = 0.2
 initial_velocity_max = 0.7
 
-[node name="AudioThruster" type="AudioStreamPlayer" parent="Body"]
+[node name="AudioThruster" type="AudioStreamPlayer3D" parent="Body"]
 stream = ExtResource("7_fntrd")
+volume_db = 4.0
 
 [node name="ConeTwistJoint3D" type="ConeTwistJoint3D" parent="Body"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.128854, 0)

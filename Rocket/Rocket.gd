@@ -24,8 +24,8 @@ const ForceThresholdToExplode: float = 30.0
 const StampInterval: float = 2.0
 var countStamp: float = 0.0
 
-var audioThruster: AudioStreamPlayer
-var audioCrash: AudioStreamPlayer
+var audioThruster: AudioStreamPlayer3D
+var audioCrash: AudioStreamPlayer3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -94,6 +94,7 @@ func _input(event):
 		audioThruster.stop()
 
 func explode(v_old: Vector3):
+	audioCrash.set_global_position(body.get_global_position())
 	audioCrash.play()
 	var last_position: Vector3 = body.global_position
 	remove_child(body)
