@@ -200,6 +200,8 @@ shape = 4
 material = SubResource("FogMaterial_lgquu")
 
 [node name="Floor" type="StaticBody3D" parent="."]
+collision_layer = 255
+collision_mask = 255
 physics_material_override = SubResource("PhysicsMaterial_dlljf")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
@@ -219,6 +221,8 @@ transform = Transform3D(1, 0, 0, 0, 0.79653, 0.604599, 0, -0.604599, 0.79653, 0,
 
 [node name="GoalStage" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.79274, 0.271678, -6.367)
+collision_layer = 255
+collision_mask = 255
 physics_material_override = SubResource("PhysicsMaterial_drmpy")
 script = ExtResource("3_bpf7o")
 
