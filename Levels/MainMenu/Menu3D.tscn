@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=3 uid="uid://csd07mqkxxku3"]
 
-[ext_resource type="Script" path="res://Menu3D.gd" id="1_et0ad"]
+[ext_resource type="Script" path="res://Levels/MainMenu/Menu3D.gd" id="1_et0ad"]
 [ext_resource type="PackedScene" uid="uid://c5fr1stqyl6p0" path="res://Objects/PCDesk/PCDesk.glb" id="1_lvafn"]
 [ext_resource type="Material" uid="uid://c2em3mrm0cy1u" path="res://Materials/M_Concrete.tres" id="2_03fka"]
 [ext_resource type="PackedScene" uid="uid://bjx4rs6gdiep1" path="res://Objects/Monitor/Monitor.tscn" id="2_b4uki"]
-[ext_resource type="PackedScene" uid="uid://cdhomtkau3bme" path="res://Menu.tscn" id="4_bg2u2"]
+[ext_resource type="PackedScene" uid="uid://cdhomtkau3bme" path="res://Levels/MainMenu/Menu.tscn" id="4_bg2u2"]
 [ext_resource type="PackedScene" uid="uid://cjfx23honwhou" path="res://Objects/Keyboard/Keyboard.tscn" id="5_y0em7"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_hlycc"]

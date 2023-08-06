@@ -40,11 +40,11 @@ func _keyboard_input_event(keyname: String, event: InputEvent):
 			get_node("Keyboard/KeySoundPlayer").play()
 			var screen: Control = get_node("SubViewport/Control")
 			if keyname == "Enter":
-				screen._input_character("\n")
+				screen.input_character("\n")
 			elif keyname == "Delete":
-				screen._input_character("\b")
+				screen.input_character("\b")
 			else:
-				screen._input_character(keyname)
+				screen.input_character(keyname)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):

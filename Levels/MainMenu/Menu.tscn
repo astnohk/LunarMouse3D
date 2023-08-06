@@ -1,9 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://cdhomtkau3bme"]
+[gd_scene load_steps=10 format=3 uid="uid://cdhomtkau3bme"]
 
-[ext_resource type="Shader" path="res://Materials/S_MenuBackground.gdshader" id="1_60lxb"]
-[ext_resource type="Script" path="res://Menu.gd" id="1_xt257"]
-[ext_resource type="PackedScene" uid="uid://c4nf2lg2ejnsx" path="res://Levels/Level001.tscn" id="2_2svbg"]
-[ext_resource type="Script" path="res://MenuBackground.gd" id="2_lp8mt"]
+[ext_resource type="Script" path="res://Levels/MainMenu/Menu.gd" id="1_dgngp"]
+[ext_resource type="PackedScene" uid="uid://c4nf2lg2ejnsx" path="res://Levels/Level001.tscn" id="2_nubvb"]
+[ext_resource type="Shader" path="res://Materials/S_MenuBackground.gdshader" id="3_ls51f"]
+[ext_resource type="Script" path="res://Levels/MainMenu/MenuBackground.gd" id="4_x7ml1"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_0wc13"]
 seed = 1
@@ -12,21 +12,12 @@ frequency = 0.5
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hxhln"]
 noise = SubResource("FastNoiseLite_0wc13")
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_vawpm"]
-seed = 13
-fractal_octaves = 6
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qrwhl"]
-noise = SubResource("FastNoiseLite_vawpm")
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_i7tx3"]
-shader = ExtResource("1_60lxb")
+shader = ExtResource("3_ls51f")
 shader_parameter/offset = Vector2(0, 0)
 shader_parameter/noise_strength = 0.05
-shader_parameter/noise_lowfreq_strength = 0.05
 shader_parameter/brightness = 0.8
 shader_parameter/noise = SubResource("NoiseTexture2D_hxhln")
-shader_parameter/noise_lowfreq = SubResource("NoiseTexture2D_qrwhl")
 
 [sub_resource type="LabelSettings" id="LabelSettings_icwea"]
 font_size = 48
@@ -43,8 +34,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_xt257")
-next_scene = ExtResource("2_2svbg")
+script = ExtResource("1_dgngp")
+next_scene = ExtResource("2_nubvb")
 
 [node name="Background" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_i7tx3")
@@ -55,7 +46,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
-script = ExtResource("2_lp8mt")
+script = ExtResource("4_x7ml1")
 
 [node name="Shell" type="VBoxContainer" parent="."]
 layout_mode = 1
