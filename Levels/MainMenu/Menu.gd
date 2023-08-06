@@ -83,17 +83,6 @@ func backspace():
 	if len(lines) > 0 and len(lines[0].text) > 0:
 		lines[0].text = lines[0].text.substr(0, len(lines[0].text) - 1)
 
-func _on_label_new_game_gui_input(event):
-	if event is InputEventMouseButton:
-		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-			start_new_level()
-
-func _on_label_scores_gui_input(event):
-	if event is InputEventMouseButton:
-		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-			# Show Scores
-			show_scores()
-
 func start_new_level():
 	# Start New Game
 	get_tree().change_scene_to_packed(next_scene)

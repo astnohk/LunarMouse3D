@@ -14,6 +14,7 @@ func _ready():
 	var screen: MeshInstance3D = get_node("Monitor/Sphere")
 	screen_material = screen.get_surface_override_material(0)
 	var viewport: SubViewport = get_node("SubViewport")
+	viewport.set_update_mode(SubViewport.UPDATE_WHEN_PARENT_VISIBLE)
 	screen_material.set_shader_parameter("screen", viewport.get_texture())
 	# Keyboard
 	connect_keyboards()
@@ -21,7 +22,6 @@ func _ready():
 func connect_keyboards():
 	var keyboard: Node3D = get_node("Keyboard")
 	for keyname in enabled_keys_list:
-		print("Key_{key}/Area3D".format({ "key": keyname }))
 		var key_instance: Area3D = keyboard.get_node("Key_{key}/Area3D".format({ "key": keyname }))
 		var input_event_callback = func(
 			_camera: Node,
