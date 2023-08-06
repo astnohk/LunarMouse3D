@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://csd07mqkxxku3"]
+
+[ext_resource type="Script" path="res://Menu3D.gd" id="1_et0ad"]
+[ext_resource type="PackedScene" uid="uid://c5fr1stqyl6p0" path="res://Objects/PCDesk/PCDesk.glb" id="1_lvafn"]
+[ext_resource type="PackedScene" uid="uid://bjx4rs6gdiep1" path="res://Objects/Monitor/Monitor.tscn" id="2_b4uki"]
+[ext_resource type="PackedScene" uid="uid://cdhomtkau3bme" path="res://Menu.tscn" id="4_bg2u2"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_hlycc"]
+size = Vector2(5, 5)
+
+[sub_resource type="HeightMapShape3D" id="HeightMapShape3D_qwgym"]
+map_width = 6
+map_depth = 6
+map_data = PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_et0ad")
+
+[node name="CameraPivot" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.22713, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.415489, -0.0631998, -0.811069)
+fov = 90.0
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("PlaneMesh_hlycc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("HeightMapShape3D_qwgym")
+
+[node name="PCDesk" parent="." instance=ExtResource("1_lvafn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0145693, 0, -1.09995)
+
+[node name="Monitor" parent="." instance=ExtResource("2_b4uki")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.415414, 0.921451, -1.17568)
+
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(384, 384)
+
+[node name="Control" parent="SubViewport" instance=ExtResource("4_bg2u2")]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.0179759, 0.999838, 0, -0.999838, 0.0179759, -0.0847193, 3.67593, -0.42689)
+spot_range = 5.09993
+spot_angle = 39.7782

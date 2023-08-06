@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjx4rs6gdiep1"]
+
+[ext_resource type="PackedScene" uid="uid://6vq73m2utugp" path="res://Objects/Monitor/Monitor.glb" id="1_o3wj0"]
+[ext_resource type="Material" uid="uid://cqyxfcdrq2y68" path="res://Objects/Monitor/M_MonitorBase.tres" id="2_qi43h"]
+[ext_resource type="Shader" path="res://Objects/Monitor/S_MonitorScreen.gdshader" id="3_dqdlj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_60mfs"]
+render_priority = 0
+shader = ExtResource("3_dqdlj")
+shader_parameter/brightness = null
+
+[node name="Monitor" instance=ExtResource("1_o3wj0")]
+
+[node name="Monitor2" parent="." index="0"]
+material_override = ExtResource("2_qi43h")
+
+[node name="Foot" parent="." index="1"]
+material_override = ExtResource("2_qi43h")
+
+[node name="Sphere" parent="." index="2"]
+surface_material_override/0 = SubResource("ShaderMaterial_60mfs")

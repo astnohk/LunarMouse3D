@@ -1,0 +1,90 @@
+[gd_scene load_steps=12 format=3 uid="uid://cdhomtkau3bme"]
+
+[ext_resource type="Shader" path="res://Materials/S_MenuBackground.gdshader" id="1_60lxb"]
+[ext_resource type="Script" path="res://Menu.gd" id="1_xt257"]
+[ext_resource type="PackedScene" uid="uid://c4nf2lg2ejnsx" path="res://Levels/Level001.tscn" id="2_2svbg"]
+[ext_resource type="Script" path="res://MenuBackground.gd" id="2_lp8mt"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_0wc13"]
+seed = 1
+frequency = 0.5
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hxhln"]
+noise = SubResource("FastNoiseLite_0wc13")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vawpm"]
+seed = 13
+fractal_octaves = 6
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qrwhl"]
+noise = SubResource("FastNoiseLite_vawpm")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i7tx3"]
+shader = ExtResource("1_60lxb")
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/noise_strength = 0.05
+shader_parameter/noise_lowfreq_strength = 0.05
+shader_parameter/brightness = 0.8
+shader_parameter/noise = SubResource("NoiseTexture2D_hxhln")
+shader_parameter/noise_lowfreq = SubResource("NoiseTexture2D_qrwhl")
+
+[sub_resource type="LabelSettings" id="LabelSettings_icwea"]
+font_size = 48
+font_color = Color(0, 1, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_wavwb"]
+font_size = 48
+font_color = Color(0, 1, 0, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xt257")
+next_scene = ExtResource("2_2svbg")
+
+[node name="Background" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_i7tx3")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("2_lp8mt")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Label_NewGame" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 3
+text = "New Game"
+label_settings = SubResource("LabelSettings_icwea")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label_Scores" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 3
+text = "Scores"
+label_settings = SubResource("LabelSettings_wavwb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="gui_input" from="CenterContainer/VBoxContainer/Label_NewGame" to="." method="_on_label_new_game_gui_input"]
+[connection signal="gui_input" from="CenterContainer/VBoxContainer/Label_Scores" to="." method="_on_label_scores_gui_input"]
