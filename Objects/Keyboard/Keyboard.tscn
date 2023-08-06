@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://cjfx23honwhou"]
+
+[ext_resource type="PackedScene" uid="uid://ds8st83fn1r1k" path="res://Objects/Keyboard/Keyboard.glb" id="1_a38hf"]
+[ext_resource type="Shape3D" uid="uid://ddm7okbudnemv" path="res://Objects/Keyboard/PS_Keyboard_NormalKeys.tres" id="2_dk1pk"]
+[ext_resource type="Shape3D" uid="uid://c5gny1b5l3rn0" path="res://Objects/Keyboard/PS_Keyboard_EnterKeys.tres" id="3_bx0lc"]
+[ext_resource type="Shape3D" uid="uid://dxojjt606vtka" path="res://Objects/Keyboard/PS_Keyboard_DeleteKeys.tres" id="4_slubw"]
+[ext_resource type="AudioStream" uid="uid://14gauqgeycf0" path="res://Audio/Click.wav" id="5_gsnoj"]
+
+[node name="Keyboard" instance=ExtResource("1_a38hf")]
+
+[node name="Area3D" type="Area3D" parent="Key_1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00763041, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Key_1/Area3D" index="0"]
+shape = ExtResource("2_dk1pk")
+
+[node name="Area3D" type="Area3D" parent="Key_2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.008, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Key_2/Area3D" index="0"]
+shape = ExtResource("2_dk1pk")
+
+[node name="Area3D" type="Area3D" parent="Key_Enter" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.008, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Key_Enter/Area3D" index="0"]
+shape = ExtResource("3_bx0lc")
+
+[node name="Area3D" type="Area3D" parent="Key_Delete" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.008, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Key_Delete/Area3D" index="0"]
+shape = ExtResource("4_slubw")
+
+[node name="KeySoundPlayer" type="AudioStreamPlayer3D" parent="." index="44"]
+stream = ExtResource("5_gsnoj")

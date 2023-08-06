@@ -57,18 +57,25 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 script = ExtResource("2_lp8mt")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="Shell" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_left = 0.02
+anchor_top = 0.02
+anchor_right = 0.98
+anchor_bottom = 0.98
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+[node name="VBoxContainer_" type="VBoxContainer" parent="."]
+visible = false
 layout_mode = 2
+offset_left = 449.0
+offset_top = 252.0
+offset_right = 703.0
+offset_bottom = 396.0
 
-[node name="Label_NewGame" type="Label" parent="CenterContainer/VBoxContainer"]
+[node name="Label_NewGame" type="Label" parent="VBoxContainer_"]
 layout_mode = 2
 mouse_filter = 0
 mouse_default_cursor_shape = 3
@@ -77,7 +84,7 @@ label_settings = SubResource("LabelSettings_icwea")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label_Scores" type="Label" parent="CenterContainer/VBoxContainer"]
+[node name="Label_Scores" type="Label" parent="VBoxContainer_"]
 layout_mode = 2
 mouse_filter = 0
 mouse_default_cursor_shape = 3
@@ -86,5 +93,5 @@ label_settings = SubResource("LabelSettings_wavwb")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="gui_input" from="CenterContainer/VBoxContainer/Label_NewGame" to="." method="_on_label_new_game_gui_input"]
-[connection signal="gui_input" from="CenterContainer/VBoxContainer/Label_Scores" to="." method="_on_label_scores_gui_input"]
+[connection signal="gui_input" from="VBoxContainer_/Label_NewGame" to="." method="_on_label_new_game_gui_input"]
+[connection signal="gui_input" from="VBoxContainer_/Label_Scores" to="." method="_on_label_scores_gui_input"]

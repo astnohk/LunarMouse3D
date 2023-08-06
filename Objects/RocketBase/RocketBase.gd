@@ -10,7 +10,7 @@ func _ready():
 	animation_player.current_animation = "Open"
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
 func _animation_finished(anim_name):

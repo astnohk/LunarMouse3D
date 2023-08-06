@@ -11,7 +11,7 @@ func _ready():
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	self.material.set_shader_parameter("offset", [randf(), randf()])
 	brightness = clampf(
 		brightness + randf_range(-1.0 * flicker_strength, flicker_strength),
