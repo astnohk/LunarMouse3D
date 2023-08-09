@@ -20,6 +20,7 @@ noise = SubResource("FastNoiseLite_e5v0k")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vi8au"]
 shader = ExtResource("3_334lj")
 shader_parameter/noise_offset = Vector2(0, 0)
+shader_parameter/leak_brightness = 0.0125
 shader_parameter/noise = SubResource("NoiseTexture2D_hf02u")
 
 [sub_resource type="LabelSettings" id="LabelSettings_dmhmx"]

@@ -117,5 +117,5 @@ func stamp():
 		return
 	var foot_print: Node3D = foot_prints.instantiate()
 	var marker: Marker3D = get_node("Body/ConeTwistJoint3D/RigidBody3D/Marker3D")
-	foot_print.set_global_position(marker.get_global_position())
+	foot_print.global_position = marker.get_global_position()
 	get_viewport().get_tree().get_root().add_child(foot_print)

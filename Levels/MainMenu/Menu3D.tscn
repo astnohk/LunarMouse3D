@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://csd07mqkxxku3"]
+[gd_scene load_steps=13 format=3 uid="uid://csd07mqkxxku3"]
 
 [ext_resource type="Script" path="res://Levels/MainMenu/Menu3D.gd" id="1_et0ad"]
 [ext_resource type="PackedScene" uid="uid://c5fr1stqyl6p0" path="res://Objects/PCDesk/PCDesk.glb" id="1_lvafn"]
@@ -6,6 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://bjx4rs6gdiep1" path="res://Objects/Monitor/Monitor.tscn" id="2_b4uki"]
 [ext_resource type="PackedScene" uid="uid://cdhomtkau3bme" path="res://Levels/MainMenu/Menu.tscn" id="4_bg2u2"]
 [ext_resource type="PackedScene" uid="uid://cjfx23honwhou" path="res://Objects/Keyboard/Keyboard.tscn" id="5_y0em7"]
+[ext_resource type="PackedScene" uid="uid://c4nf2lg2ejnsx" path="res://Levels/Level001.tscn" id="6_oe6a0"]
+
+[sub_resource type="Environment" id="Environment_uluar"]
+glow_enabled = true
+glow_intensity = 2.0
+glow_strength = 1.5
+glow_bloom = 0.1
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_hlycc"]
 material = ExtResource("2_03fka")
@@ -31,6 +38,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.31441, 0.162994)
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot"]
 transform = Transform3D(1, 0, 0, 0, 0.894428, 0.447213, 0, -0.447213, 0.894428, -0.415489, -0.0631998, -0.811069)
+environment = SubResource("Environment_uluar")
 fov = 90.0
 
 [node name="Floor" type="StaticBody3D" parent="."]
@@ -61,6 +69,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.415414, 0.921451, -1.17568
 size = Vector2i(384, 384)
 
 [node name="Control" parent="SubViewport" instance=ExtResource("4_bg2u2")]
+next_scene = ExtResource("6_oe6a0")
 
 [node name="Keyboard" parent="." instance=ExtResource("5_y0em7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.411571, 0.921786, -0.806336)
@@ -68,8 +77,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.411571, 0.921786, -0.80633
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.0179759, 0.999838, 0, -0.999838, 0.0179759, -0.0847193, 3.67593, -0.55785)
 light_color = Color(0.917647, 0.847059, 0.796078, 1)
-light_energy = 2.0
-light_indirect_energy = 2.0
-light_volumetric_fog_energy = 2.0
+light_energy = 0.1
+light_indirect_energy = 0.1
+light_volumetric_fog_energy = 0.1
 spot_range = 5.09993
 spot_angle = 39.7782

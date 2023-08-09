@@ -5,6 +5,8 @@ extends Node3D
 var player: Node3D
 
 
+const probability_screen_phase_error: float = 0.0125
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player = get_node_or_null("Rocket")
@@ -15,7 +17,10 @@ func _process(_delta):
 	# Update post process shader's parameter
 	var rect: ColorRect = get_node("CanvasLayer/ColorRect")
 	var mat: ShaderMaterial = rect.material
-	mat.set_shader_parameter("noise_offset", [randf(), randf_range(0.0, 0.2)])
+	if randf() < probability_screen_phase_error:
+		mat.set_shader_parameter("noise_offset", [randf_range(0.0, 0.0125), randf_range(0.0, 0.2)])
+	else:
+		mat.set_shader_parameter("noise_offset", [randf_range(0.0, 0.00125), randf_range(0.0, 0.2)])
 	# Update camera position
 	if player:
 		var body: RigidBody3D = player.get_node_or_null("Body")
