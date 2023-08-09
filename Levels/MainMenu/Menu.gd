@@ -70,7 +70,7 @@ func new_line():
 	var line: Label = Label.new()
 	line.label_settings = LabelSettings.new()
 	line.label_settings.line_spacing = 0
-	line.label_settings.font_size = 20
+	line.label_settings.font_size = 24
 	line.label_settings.font_color = Color()
 	line.label_settings.font_color.r8 = 12
 	line.label_settings.font_color.g8 = 239

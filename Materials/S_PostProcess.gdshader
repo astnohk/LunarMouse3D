@@ -1,6 +1,6 @@
 shader_type canvas_item;
 
-uniform sampler2D screen_texture: hint_screen_texture, repeat_disable, filter_nearest;
+uniform sampler2D screen_texture: hint_screen_texture, repeat_enable, filter_linear;
 uniform sampler2D noise : repeat_enable;
 uniform vec2 noise_offset = vec2(0.0, 0.0);
 uniform float leak_brightness = 0.0125;
@@ -19,7 +19,9 @@ void fragment()
 	float C_noise = 1.0 - 0.4 * texture(noise, SCREEN_UV + noise_offset).r;
 	vec2 dx = vec2(SCREEN_PIXEL_SIZE.x, 0);
 	vec3 albedo = clamp(
-		leak_brightness + texture(screen_texture, UV_fixed + vec2(noise_offset.x, 0.0)).rgb * intensity.x * intensity.y,
+		leak_brightness
+			+ textureLod(screen_texture, UV_fixed + vec2(noise_offset.x, 0.0), 0.0).rgb
+			* intensity.x * intensity.y,
 		0.0,
 		1.0);
 	float pixel_intensity = 1.1;
@@ -38,19 +40,28 @@ void fragment()
 	if (abs(color_index - 0.0) < 0.1)
 	{
 		COLOR = vec4(
-			pixel_intensity * vec3(1.0, 0.0, 0.0) * C_noise,
+			clamp(
+				pixel_intensity * vec3(1.0, 0.0, 0.0) * C_noise,
+				0.0,
+				1.0),
 			1.0);
 	}
 	else if (abs(color_index - 1.0) < 0.1)
 	{
 		COLOR = vec4(
-			pixel_intensity * vec3(0.0, 1.0, 0.0) * C_noise,
+			clamp(
+				pixel_intensity * vec3(0.0, 1.0, 0.0) * C_noise,
+				0.0,
+				1.0),
 			1.0);
 	}
 	else
 	{
 		COLOR = vec4(
-			pixel_intensity * vec3(0.0, 0.0, 1.0) * C_noise,
+			clamp(
+				pixel_intensity * vec3(0.0, 0.0, 1.0) * C_noise,
+				0.0,
+				1.0),
 			1.0);
 	}
 }
