@@ -4,6 +4,7 @@ uniform sampler2D screen_texture: hint_screen_texture, repeat_enable, filter_lin
 uniform sampler2D noise : repeat_enable;
 uniform vec2 noise_offset = vec2(0.0, 0.0);
 uniform float leak_brightness = 0.0125;
+uniform float brightness = 1.0;
 
 void fragment()
 {
@@ -19,12 +20,12 @@ void fragment()
 	float C_noise = 1.0 - 0.4 * texture(noise, SCREEN_UV + noise_offset).r;
 	vec2 dx = vec2(SCREEN_PIXEL_SIZE.x, 0);
 	vec3 albedo = clamp(
-		leak_brightness
+		(leak_brightness
 			+ textureLod(screen_texture, UV_fixed + vec2(noise_offset.x, 0.0), 0.0).rgb
-			* intensity.x * intensity.y,
+		) * intensity.x * intensity.y,
 		0.0,
 		1.0);
-	float pixel_intensity = 1.1;
+	float pixel_intensity = brightness * 1.1;
 	if (abs(color_index_noise - 0.0) < 0.1)
 	{
 		pixel_intensity *= albedo.r;

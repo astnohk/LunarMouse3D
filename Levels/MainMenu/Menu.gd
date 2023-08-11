@@ -4,11 +4,12 @@ extends Control
 
 var lines = []
 var cursor_count: float = 0.0
-var input_buffer = ""
-
+var input_buffer: String = ""
+var screen_material: ShaderMaterial = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	screen_material = get_node("CanvasLayerPostProcess/ColorRect").material
 	new_line()
 	print_characters("Menu:\n")
 	print_characters("    1: Connect\n")
@@ -17,6 +18,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if screen_material:
+		screen_material.set_shader_parameter("brightness", randf_range(0.8, 1.0))
 	cursor_count += delta
 	if cursor_count > 1.0:
 		cursor_count = 0.0

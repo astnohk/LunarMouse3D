@@ -9,6 +9,7 @@ shader = ExtResource("3_4fke6")
 shader_parameter/horizontal_freq = 128.0
 shader_parameter/vertical_freq = 128.0
 shader_parameter/leak_brightness = 0.05
+shader_parameter/brightness = 1.0
 
 [node name="Control" type="Control"]
 layout_mode = 3

@@ -11,4 +11,5 @@ void fragment() {
 		0.25 * texture(screen, UV + dx).rgb +
 		0.25 * texture(screen, UV - dy).rgb +
 		0.25 * texture(screen, UV + dy).rgb;
+	EMISSION = ALBEDO;
 }

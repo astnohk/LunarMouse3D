@@ -21,6 +21,7 @@ func _process(_delta):
 		mat.set_shader_parameter("noise_offset", [randf_range(0.0, 0.0125), randf_range(0.0, 0.2)])
 	else:
 		mat.set_shader_parameter("noise_offset", [randf_range(0.0, 0.00125), randf_range(0.0, 0.2)])
+	mat.set_shader_parameter("brightness", randf_range(0.95, 1.0))
 	# Update camera position
 	if player:
 		var body: RigidBody3D = player.get_node_or_null("Body")

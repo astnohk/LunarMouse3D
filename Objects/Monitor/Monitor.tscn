@@ -17,4 +17,5 @@ material_override = ExtResource("2_qi43h")
 material_override = ExtResource("2_qi43h")
 
 [node name="Sphere" parent="." index="2"]
+gi_mode = 2
 surface_material_override/0 = SubResource("ShaderMaterial_60mfs")
