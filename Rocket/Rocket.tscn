@@ -27,10 +27,13 @@ roughness = 0.8
 
 [sub_resource type="SphereMesh" id="SphereMesh_uj1t6"]
 material = SubResource("StandardMaterial3D_y835b")
+height = 0.4
 radial_segments = 6
 rings = 2
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_gx4o2"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_hyv3c"]
+height = 0.25
+radius = 0.4
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_kuab7"]
 material = ExtResource("3_6knww")
@@ -72,7 +75,7 @@ max_db = 6.0
 
 [node name="Body" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
-mass = 150.0
+mass = 100.0
 physics_material_override = SubResource("PhysicsMaterial_xd37k")
 continuous_cd = true
 
@@ -84,12 +87,12 @@ skeleton = NodePath("../..")
 shape = SubResource("CylinderShape3D_drmm2")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Body"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 mesh = SubResource("SphereMesh_uj1t6")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Body"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("SphereShape3D_gx4o2")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+shape = SubResource("CylinderShape3D_hyv3c")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Body"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
@@ -103,7 +106,7 @@ spot_angle = 30.0
 spot_angle_attenuation = 1.7411
 
 [node name="FootZpHinge" type="HingeJoint3D" parent="Body"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0.47)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.13, 0.47)
 node_a = NodePath("..")
 node_b = NodePath("FootZp")
 angular_limit/enable = true
@@ -111,6 +114,7 @@ angular_limit/upper = 0.0
 angular_limit/lower = 0.0
 
 [node name="FootZp" type="RigidBody3D" parent="Body/FootZpHinge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
 physics_material_override = ExtResource("4_daakr")
 continuous_cd = true
 
@@ -132,7 +136,7 @@ initial_velocity_min = 0.2
 initial_velocity_max = 0.7
 
 [node name="FootZnHinge" type="HingeJoint3D" parent="Body"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, -0.47)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.13, -0.47)
 node_a = NodePath("..")
 node_b = NodePath("FootZn")
 angular_limit/enable = true
@@ -140,6 +144,7 @@ angular_limit/upper = 0.0
 angular_limit/lower = 0.0
 
 [node name="FootZn" type="RigidBody3D" parent="Body/FootZnHinge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
 physics_material_override = ExtResource("4_daakr")
 continuous_cd = true
 
@@ -161,7 +166,7 @@ initial_velocity_min = 0.2
 initial_velocity_max = 0.7
 
 [node name="FootXpHinge" type="HingeJoint3D" parent="Body"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.47, -0.2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.47, -0.13, 0)
 node_a = NodePath("..")
 node_b = NodePath("FootXp")
 angular_limit/enable = true
@@ -169,6 +174,7 @@ angular_limit/upper = 0.0
 angular_limit/lower = 0.0
 
 [node name="FootXp" type="RigidBody3D" parent="Body/FootXpHinge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
 physics_material_override = ExtResource("4_daakr")
 continuous_cd = true
 
@@ -190,7 +196,7 @@ initial_velocity_min = 0.2
 initial_velocity_max = 0.7
 
 [node name="FootXnHinge" type="HingeJoint3D" parent="Body"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.47, -0.2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.47, -0.13, 0)
 node_a = NodePath("..")
 node_b = NodePath("FootXn")
 angular_limit/enable = true
@@ -198,6 +204,7 @@ angular_limit/upper = 0.0
 angular_limit/lower = 0.0
 
 [node name="FootXn" type="RigidBody3D" parent="Body/FootXnHinge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
 physics_material_override = ExtResource("4_daakr")
 continuous_cd = true
 
@@ -223,14 +230,14 @@ stream = ExtResource("7_fntrd")
 volume_db = 4.0
 
 [node name="ConeTwistJoint3D" type="ConeTwistJoint3D" parent="Body"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.128854, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.13, 0)
 node_a = NodePath("..")
 node_b = NodePath("RigidBody3D")
 swing_span = 0.523599
 twist_span = 0.0
 
 [node name="RigidBody3D" type="RigidBody3D" parent="Body/ConeTwistJoint3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.04, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Body/ConeTwistJoint3D/RigidBody3D"]
 mesh = SubResource("CylinderMesh_uee10")
@@ -240,3 +247,39 @@ shape = SubResource("CylinderShape3D_afu5n")
 
 [node name="Marker3D" type="Marker3D" parent="Body/ConeTwistJoint3D/RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Body"]
+transform = Transform3D(0.866025, 0.211309, 0.453154, 0, 0.906308, -0.422618, -0.5, 0.365998, 0.784886, 0.277941, 0.166114, 0.442438)
+light_color = Color(0.784314, 0, 0.0196078, 1)
+light_energy = 16.0
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+light_bake_mode = 1
+spot_range = 0.5
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="Body"]
+transform = Transform3D(0.866025, -0.211309, -0.453154, 0, 0.906308, -0.422618, 0.5, 0.365998, 0.784886, -0.278, 0.166, 0.442)
+light_color = Color(0.784314, 0, 0.0196078, 1)
+light_energy = 16.0
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+light_bake_mode = 1
+spot_range = 0.5
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="Body"]
+transform = Transform3D(-0.866025, 0.211309, 0.453154, 0, 0.906308, -0.422618, -0.5, -0.365998, -0.784886, 0.278, 0.166, -0.442)
+light_color = Color(0, 0.784314, 0.0196078, 1)
+light_energy = 16.0
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+light_bake_mode = 1
+spot_range = 0.5
+
+[node name="SpotLight3D5" type="SpotLight3D" parent="Body"]
+transform = Transform3D(-0.866025, -0.211309, -0.453154, 0, 0.906308, -0.422618, 0.5, -0.365998, -0.784886, -0.278, 0.166, -0.442)
+light_color = Color(0, 0.784314, 0.0196078, 1)
+light_energy = 16.0
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+light_bake_mode = 1
+spot_range = 0.5

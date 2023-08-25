@@ -1,17 +1,16 @@
-[gd_scene load_steps=36 format=3 uid="uid://c4nf2lg2ejnsx"]
+[gd_scene load_steps=37 format=3 uid="uid://dj5ue7m3884e"]
 
-[ext_resource type="Script" path="res://WorldBase.gd" id="1_ikbha"]
-[ext_resource type="Shader" path="res://Materials/MoonFace.gdshader" id="2_cbdtw"]
-[ext_resource type="Shader" path="res://Materials/S_PostProcess.gdshader" id="3_334lj"]
-[ext_resource type="Script" path="res://GoalStage.gd" id="3_bpf7o"]
-[ext_resource type="Script" path="res://Levels/GoalPanel.gd" id="4_4e2xu"]
-[ext_resource type="PackedScene" uid="uid://cyq7p1m4dlfly" path="res://Rocket/Rocket.tscn" id="4_i07oa"]
-[ext_resource type="PackedScene" uid="uid://7r55nm4slqb1" path="res://Levels/Level002.tscn" id="5_860b4"]
-[ext_resource type="PackedScene" uid="uid://db2eqcagyt17x" path="res://Objects/RocketBase/RocketBase.tscn" id="5_knm43"]
-[ext_resource type="PackedScene" uid="uid://dgcv15ppsv2bp" path="res://Objects/LightStands/LightStand001.tscn" id="5_nh6wg"]
-[ext_resource type="Script" path="res://Objects/RocketBase/RocketBase.gd" id="6_4yv6x"]
-[ext_resource type="PackedScene" uid="uid://cen0t24ciso2" path="res://Objects/LightStands/LightStand002.tscn" id="6_l2ox2"]
-[ext_resource type="AudioStream" uid="uid://cij28i8hcqcte" path="res://Audio/BGM.wav" id="9_atid0"]
+[ext_resource type="Script" path="res://WorldBase.gd" id="1_lfkne"]
+[ext_resource type="PackedScene" uid="uid://cyq7p1m4dlfly" path="res://Rocket/Rocket.tscn" id="2_vagni"]
+[ext_resource type="Shader" path="res://Materials/S_PostProcess.gdshader" id="3_6cpa5"]
+[ext_resource type="Script" path="res://Levels/GoalPanel.gd" id="4_ndr26"]
+[ext_resource type="AudioStream" uid="uid://cij28i8hcqcte" path="res://Audio/BGM.wav" id="5_db2lg"]
+[ext_resource type="Shader" path="res://Materials/MoonFace.gdshader" id="6_xndn6"]
+[ext_resource type="Script" path="res://GoalStage.gd" id="7_f0g3a"]
+[ext_resource type="PackedScene" uid="uid://db2eqcagyt17x" path="res://Objects/RocketBase/RocketBase.tscn" id="8_canjp"]
+[ext_resource type="Script" path="res://Objects/RocketBase/RocketBase.gd" id="9_1pfb7"]
+[ext_resource type="PackedScene" uid="uid://dgcv15ppsv2bp" path="res://Objects/LightStands/LightStand001.tscn" id="10_l2wjk"]
+[ext_resource type="PackedScene" uid="uid://cen0t24ciso2" path="res://Objects/LightStands/LightStand002.tscn" id="11_bqq5b"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_e5v0k"]
 frequency = 0.5
@@ -20,7 +19,7 @@ frequency = 0.5
 noise = SubResource("FastNoiseLite_e5v0k")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vi8au"]
-shader = ExtResource("3_334lj")
+shader = ExtResource("3_6cpa5")
 shader_parameter/noise_offset = Vector2(0, 0)
 shader_parameter/leak_brightness = 0.0125
 shader_parameter/brightness = 1.0
@@ -39,7 +38,7 @@ volumetric_fog_enabled = true
 volumetric_fog_density = 0.01
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_wpcgp"]
-seed = 359
+seed = 360
 
 [sub_resource type="NoiseTexture3D" id="NoiseTexture3D_j14cn"]
 width = 128
@@ -48,7 +47,7 @@ depth = 128
 noise = SubResource("FastNoiseLite_wpcgp")
 
 [sub_resource type="FogMaterial" id="FogMaterial_lgquu"]
-density = 0.3
+density = 0.2
 albedo = Color(0.439216, 0.439216, 0.439216, 1)
 height_falloff = 2.51676
 density_texture = SubResource("NoiseTexture3D_j14cn")
@@ -72,7 +71,7 @@ noise = SubResource("FastNoiseLite_j32ek")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nrl1a"]
 render_priority = 0
-shader = ExtResource("2_cbdtw")
+shader = ExtResource("6_xndn6")
 shader_parameter/albedo = Vector3(0.25, 0.25, 0.25)
 shader_parameter/scale = 0.25
 shader_parameter/noise = SubResource("NoiseTexture2D_ite5g")
@@ -88,6 +87,12 @@ subdivide_depth = 64
 map_width = 51
 map_depth = 51
 map_data = PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_g75ch"]
+size = Vector3(7, 12, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4i5rx"]
+size = Vector3(7, 12, 3)
 
 [sub_resource type="Environment" id="Environment_5tw1c"]
 glow_enabled = true
@@ -122,8 +127,8 @@ height = 0.1
 radius = 1.5
 
 [node name="Root" type="Node3D"]
-script = ExtResource("1_ikbha")
-player_scene = ExtResource("4_i07oa")
+script = ExtResource("1_lfkne")
+player_scene = ExtResource("2_vagni")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
@@ -178,8 +183,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource("4_4e2xu")
-next_scene = ExtResource("5_860b4")
+script = ExtResource("4_ndr26")
 
 [node name="Label" type="Label" parent="CanvasLayer2/Panel"]
 layout_mode = 1
@@ -202,7 +206,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="BGMPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("9_atid0")
+stream = ExtResource("5_db2lg")
 volume_db = -5.0
 autoplay = true
 
@@ -226,6 +230,14 @@ mesh = SubResource("PlaneMesh_ngo4x")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
 shape = SubResource("HeightMapShape3D_fvhyy")
 
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 6, -4.8)
+mesh = SubResource("BoxMesh_g75ch")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 6, -4.8)
+shape = SubResource("BoxShape3D_4i5rx")
+
 [node name="CameraPivot" type="Marker3D" parent="."]
 
 [node name="Marker3D" type="Marker3D" parent="CameraPivot"]
@@ -236,11 +248,11 @@ transform = Transform3D(1, 0, 0, 0, 0.79653, 0.604599, 0, -0.604599, 0.79653, 0,
 environment = SubResource("Environment_5tw1c")
 
 [node name="GoalStage" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.79274, 0.271678, -6.367)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 12, -4.8)
 collision_layer = 255
 collision_mask = 255
 physics_material_override = SubResource("PhysicsMaterial_drmpy")
-script = ExtResource("3_bpf7o")
+script = ExtResource("7_f0g3a")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="GoalStage"]
 mesh = SubResource("CylinderMesh_aq0pc")
@@ -255,10 +267,10 @@ disable_mode = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GoalStage/Area3D"]
 shape = SubResource("CylinderShape3D_0tmqx")
 
-[node name="RocketBase" parent="." instance=ExtResource("5_knm43")]
-script = ExtResource("6_4yv6x")
+[node name="RocketBase" parent="." instance=ExtResource("8_canjp")]
+script = ExtResource("9_1pfb7")
 
-[node name="Rocket" parent="." instance=ExtResource("4_i07oa")]
+[node name="Rocket" parent="." instance=ExtResource("2_vagni")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 
 [node name="SunLight" type="DirectionalLight3D" parent="."]
@@ -302,52 +314,52 @@ omni_attenuation = 1.7411
 
 [node name="LightStand001s" type="Node3D" parent="."]
 
-[node name="LightStand001_001" parent="LightStand001s" instance=ExtResource("5_nh6wg")]
+[node name="LightStand001_001" parent="LightStand001s" instance=ExtResource("10_l2wjk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.69139, 0, 1.04783)
 
-[node name="LightStand001_002" parent="LightStand001s" instance=ExtResource("5_nh6wg")]
+[node name="LightStand001_002" parent="LightStand001s" instance=ExtResource("10_l2wjk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.39995, 0, -7.93515)
 
-[node name="LightStand001_003" parent="LightStand001s" instance=ExtResource("5_nh6wg")]
+[node name="LightStand001_003" parent="LightStand001s" instance=ExtResource("10_l2wjk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.0447, 9.53674e-07, -19.5065)
 
-[node name="LightStand001_004" parent="LightStand001s" instance=ExtResource("5_nh6wg")]
+[node name="LightStand001_004" parent="LightStand001s" instance=ExtResource("10_l2wjk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5174, 0, 4.43166)
 
-[node name="LightStand001_005" parent="LightStand001s" instance=ExtResource("5_nh6wg")]
+[node name="LightStand001_005" parent="LightStand001s" instance=ExtResource("10_l2wjk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.31923, -9.53674e-07, 8.03943)
 
-[node name="LightStand001_006" parent="LightStand001s" instance=ExtResource("5_nh6wg")]
+[node name="LightStand001_006" parent="LightStand001s" instance=ExtResource("10_l2wjk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.93501, -0.107696, 17.908)
 
-[node name="LightStand001_007" parent="LightStand001s" instance=ExtResource("5_nh6wg")]
+[node name="LightStand001_007" parent="LightStand001s" instance=ExtResource("10_l2wjk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0618, -0.107696, 17.908)
 
-[node name="LightStand001_008" parent="LightStand001s" instance=ExtResource("5_nh6wg")]
+[node name="LightStand001_008" parent="LightStand001s" instance=ExtResource("10_l2wjk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.1478, -0.107696, 5.66444)
 
-[node name="LightStand001_009" parent="LightStand001s" instance=ExtResource("5_nh6wg")]
+[node name="LightStand001_009" parent="LightStand001s" instance=ExtResource("10_l2wjk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.0242, -0.107697, -8.92965)
 
-[node name="LightStand001_010" parent="LightStand001s" instance=ExtResource("5_nh6wg")]
+[node name="LightStand001_010" parent="LightStand001s" instance=ExtResource("10_l2wjk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5104, -0.107697, -19.8306)
 
-[node name="LightStand001_011" parent="LightStand001s" instance=ExtResource("5_nh6wg")]
+[node name="LightStand001_011" parent="LightStand001s" instance=ExtResource("10_l2wjk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.66063, -0.107697, -18.9038)
 
-[node name="LightStand001_012" parent="LightStand001s" instance=ExtResource("5_nh6wg")]
+[node name="LightStand001_012" parent="LightStand001s" instance=ExtResource("10_l2wjk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.055, -0.107696, 15.4581)
 
-[node name="LightStand001_013" parent="LightStand001s" instance=ExtResource("5_nh6wg")]
+[node name="LightStand001_013" parent="LightStand001s" instance=ExtResource("10_l2wjk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.4952, -0.107696, -5.86024)
 
 [node name="LightStand002s" type="Node3D" parent="."]
 
-[node name="LightStand002_001" parent="LightStand002s" instance=ExtResource("6_l2ox2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.26448, 0, -6.36412)
+[node name="LightStand002_001" parent="LightStand002s" instance=ExtResource("11_bqq5b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.74254, 12, -4.8)
 
-[node name="LightStand002_002" parent="LightStand002s" instance=ExtResource("6_l2ox2")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.23447, 0, -6.36412)
+[node name="LightStand002_002" parent="LightStand002s" instance=ExtResource("11_bqq5b")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.7396, 12, -4.8)
 
 [connection signal="gui_input" from="CanvasLayer2/ShowControlPanel/ResetLabel" to="." method="_on_reset_label_gui_input"]
 [connection signal="gui_input" from="CanvasLayer2/Panel" to="CanvasLayer2/Panel" method="_on_gui_input"]

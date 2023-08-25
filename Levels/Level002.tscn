@@ -1,8 +1,9 @@
-[gd_scene load_steps=36 format=3 uid="uid://7r55nm4slqb1"]
+[gd_scene load_steps=37 format=3 uid="uid://7r55nm4slqb1"]
 
 [ext_resource type="Script" path="res://WorldBase.gd" id="1_x86to"]
 [ext_resource type="PackedScene" uid="uid://cyq7p1m4dlfly" path="res://Rocket/Rocket.tscn" id="2_t4xjc"]
 [ext_resource type="Shader" path="res://Materials/S_PostProcess.gdshader" id="3_bxm8w"]
+[ext_resource type="Script" path="res://Levels/GoalPanel.gd" id="4_lle2h"]
 [ext_resource type="AudioStream" uid="uid://cij28i8hcqcte" path="res://Audio/BGM.wav" id="4_yqccn"]
 [ext_resource type="Shader" path="res://Materials/MoonFace.gdshader" id="5_til0j"]
 [ext_resource type="Script" path="res://GoalStage.gd" id="6_nqkh1"]
@@ -20,6 +21,8 @@ noise = SubResource("FastNoiseLite_e5v0k")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vi8au"]
 shader = ExtResource("3_bxm8w")
 shader_parameter/noise_offset = Vector2(0, 0)
+shader_parameter/leak_brightness = 0.0125
+shader_parameter/brightness = 1.0
 shader_parameter/noise = SubResource("NoiseTexture2D_hf02u")
 
 [sub_resource type="LabelSettings" id="LabelSettings_dmhmx"]
@@ -180,6 +183,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource("4_lle2h")
 
 [node name="Label" type="Label" parent="CanvasLayer2/Panel"]
 layout_mode = 1
@@ -358,5 +362,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.1324, 2.9, 2.25114)
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -14.1023, 2.9, 2.25114)
 
 [connection signal="gui_input" from="CanvasLayer2/ShowControlPanel/ResetLabel" to="." method="_on_reset_label_gui_input"]
+[connection signal="gui_input" from="CanvasLayer2/Panel" to="CanvasLayer2/Panel" method="_on_gui_input"]
 [connection signal="body_entered" from="GoalStage/Area3D" to="GoalStage" method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="GoalStage/Area3D" to="GoalStage" method="_on_area_3d_body_exited"]
