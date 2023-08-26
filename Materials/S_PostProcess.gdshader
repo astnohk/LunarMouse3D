@@ -5,6 +5,7 @@ uniform sampler2D noise : repeat_enable;
 uniform vec2 noise_offset = vec2(0.0, 0.0);
 uniform float leak_brightness = 0.0125;
 uniform float brightness = 1.0;
+uniform float gamma = 1.6;
 
 void fragment()
 {
@@ -19,25 +20,11 @@ void fragment()
 		pow(abs(sin(1.0 * PI * vertical_freq * UV.y)), 0.5));
 	float C_noise = 1.0 - 0.4 * texture(noise, SCREEN_UV + noise_offset).r;
 	vec2 dx = vec2(SCREEN_PIXEL_SIZE.x, 0);
-	vec3 albedo = clamp(
+	vec3 albedo =
 		(leak_brightness
-			+ textureLod(screen_texture, UV_fixed + vec2(noise_offset.x, 0.0), 0.0).rgb
-		) * intensity.x * intensity.y,
-		0.0,
-		1.0);
-	float pixel_intensity = brightness * 1.1;
-	if (abs(color_index_noise - 0.0) < 0.1)
-	{
-		pixel_intensity *= albedo.r;
-	}
-	else if (abs(color_index - 1.0) < 0.1)
-	{
-		pixel_intensity *= albedo.g;
-	}
-	else
-	{
-		pixel_intensity *= albedo.b;
-	}
+			+ brightness * pow(textureLod(screen_texture, UV_fixed + vec2(noise_offset.x, 0.0), 0.0).rgb, vec3(1.0 / gamma))
+		) * intensity.x * intensity.y;
+	vec3 pixel_intensity = 1.1 * albedo;
 	if (abs(color_index - 0.0) < 0.1)
 	{
 		COLOR = vec4(

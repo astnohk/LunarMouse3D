@@ -1,3 +1,4 @@
+@tool
 extends Control
 
 @export var next_scene: PackedScene

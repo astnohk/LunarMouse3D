@@ -1,3 +1,4 @@
+@tool
 extends Node3D
 
 var screen_material: ShaderMaterial
