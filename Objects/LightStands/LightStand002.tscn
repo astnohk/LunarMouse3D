@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://cen0t24ciso2"]
+[gd_scene load_steps=7 format=3 uid="uid://cen0t24ciso2"]
 
+[ext_resource type="Script" path="res://Objects/LightStands/LightStand002.gd" id="1_3eyu8"]
 [ext_resource type="PackedScene" uid="uid://dvu3ilqmaho4i" path="res://Objects/LightStands/LightStand002.glb" id="1_ixyqc"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qb0re"]
@@ -15,6 +16,7 @@ radius = 0.05
 radius = 0.2
 
 [node name="LightStand002" type="Node3D"]
+script = ExtResource("1_3eyu8")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 physics_material_override = SubResource("PhysicsMaterial_qb0re")
