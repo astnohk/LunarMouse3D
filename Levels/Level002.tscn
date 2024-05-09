@@ -1,10 +1,11 @@
-[gd_scene load_steps=37 format=3 uid="uid://7r55nm4slqb1"]
+[gd_scene load_steps=38 format=3 uid="uid://7r55nm4slqb1"]
 
 [ext_resource type="Script" path="res://WorldBase.gd" id="1_x86to"]
 [ext_resource type="PackedScene" uid="uid://cyq7p1m4dlfly" path="res://Rocket/Rocket.tscn" id="2_t4xjc"]
 [ext_resource type="Shader" path="res://Materials/S_PostProcess.gdshader" id="3_bxm8w"]
 [ext_resource type="Script" path="res://Levels/GoalPanel.gd" id="4_lle2h"]
 [ext_resource type="AudioStream" uid="uid://cij28i8hcqcte" path="res://Audio/BGM.wav" id="4_yqccn"]
+[ext_resource type="PackedScene" uid="uid://dj5ue7m3884e" path="res://Levels/LevelLast.tscn" id="5_ghrrp"]
 [ext_resource type="Shader" path="res://Materials/MoonFace.gdshader" id="5_til0j"]
 [ext_resource type="Script" path="res://GoalStage.gd" id="6_nqkh1"]
 [ext_resource type="PackedScene" uid="uid://db2eqcagyt17x" path="res://Objects/RocketBase/RocketBase.tscn" id="7_60srl"]
@@ -23,6 +24,7 @@ shader = ExtResource("3_bxm8w")
 shader_parameter/noise_offset = Vector2(0, 0)
 shader_parameter/leak_brightness = 0.0125
 shader_parameter/brightness = 1.0
+shader_parameter/gamma = 1.6
 shader_parameter/noise = SubResource("NoiseTexture2D_hf02u")
 
 [sub_resource type="LabelSettings" id="LabelSettings_dmhmx"]
@@ -184,6 +186,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("4_lle2h")
+next_scene = ExtResource("5_ghrrp")
 
 [node name="Label" type="Label" parent="CanvasLayer2/Panel"]
 layout_mode = 1
